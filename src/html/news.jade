@@ -1,0 +1,14 @@
+extends ../layout
+block vue
+    .news_list
+        .list(v-for='(it,ind) in items' @click="toNews(it)" )
+            .head()
+                span {{it.announcementTypeName}}
+                b {{it.title}}
+                sub {{it.updateTime}}
+            .cont {{it.content}}
+
+        include ../data_null
+
+block js
+    script(type='text/javascript' src="../script/news.js")

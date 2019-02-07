@@ -1,0 +1,59 @@
+extends ../layout
+block vue
+    .yhq_det(v-if="item_set")
+        .cont
+            i.icon-close( @click="item_set=null")
+            dl
+                dt 优惠名称
+                dd {{item_set.discounts.discountName}}
+            dl
+                dt 优惠说明
+                dd {{item_set.discounts.displayName}}
+            dl
+                dt 优惠编码
+                dd {{item_set.discountId}}
+            dl(v-if="item_set.discounts.amount||item_set.discounts.amount>0")
+                dt 优惠金额
+                dd {{item_set.discounts.amount}}
+            dl(v-else)
+                dt 优惠比例
+                dd {{item_set.discounts.ratio}}%
+            dl
+                dt 流水要求
+                dd {{item_set.discounts.drawing}}倍
+            dl
+                dt 使用范围
+                dd {{item_set.discounts.payTypeName}}
+            dl
+                dt 开始时间
+                dd {{item_set.discounts.startTime}}
+            dl
+                dt 结束时间
+                dd {{item_set.discounts.endTime}}
+
+            .btn(v-if="item_set.useState == 0"  @click="toUse()") 去使用
+
+
+    .jilu_yhq
+        .yhq_li(v-if="items&&items.length>0" v-for='(it,ind) in items' v-bind:class="yhqType(it)")
+            dl(v-if="it.discounts"  @click="item_set = it")
+                dt
+                    h1.je(v-if="it.discounts.amount||it.discounts.amount>0") {{it.discounts.amount}}
+                    h1.bl(v-else-if="it.discounts.ratio") {{it.discounts.ratio}}
+                    h1(v-else) --
+                    h4 {{it.discounts.discountName}}
+                    p 满{{it.discounts.minDeposit}}元可用
+
+                dd
+                    h4 流水要求：{{it.discounts.drawing}}倍
+                    h4
+                        span 有效期：
+                        b {{it.discounts.endTime}}
+                    p 使用范围：{{it.discounts.payTypeName}}
+
+        include ../data_null
+
+
+
+block js
+    script(type='text/javascript' src="../script/coupon.js")

@@ -1,0 +1,59 @@
+extends ../layout
+block vue
+    .zj_page
+        ul.list-group
+            h3 平台选择
+            li(@click="showPop('zc')")
+                em 转出平台
+                i.icon-chevron-right
+                .val {{setBanTxt1()}}
+            li(@click="showPop('zr')")
+                em 转入平台
+                i.icon-chevron-right(v-if="!gameCode")
+                .val {{setBanTxt2()}}
+
+        ul.list-group
+            h3 转账金额
+            li.ckje
+                b ¥
+                input#amount(type="tel" v-model="amount" placeholder="请输入金额" @blur="amount=parseInt(amount)")
+
+            li
+                .mrje
+                    label(v-for="(it,ind) in mrje" v-bind:class="it==amount?'active':''"  @click="amount=it") {{it}}
+                    label(v-if="tab1!=999" v-bind:class="banlance[tab1].gameBanlance==amount?'active':''"  @click="amountAll()") 全部转出
+
+        .btn(@click="transfer" ) 确认转账
+
+        .tips
+            h3 温馨提示
+            ol
+                li 金沙钱包和BBIN平台只允许转出整数金额；
+                li 金沙钱包之外的平台互转也只允许整数金额；
+                li( @click="getBanlance(1)")
+                    span 如果钱包余额未即时更新，请
+                    b 点击这里强制刷新
+
+    #pop_zc.pop_list(v-if="banlance")
+        i.icon-close(onclick="$('.pop_list').slideUp()")
+        h2 请选择转出平台
+        .box
+            .li(v-for="(it,ind) in banlance" @click="setTab1(it,ind)" v-bind:class!="it.gameBanlance<=0||it.gameBanlance<1&&it.gameKey=='BBIN'||ind==tab2||it.gameKey==gameCode?'disabled':''")
+                .icon(:style="rbg(it.gamePlatformLogo)")
+                span {{it.gamePlatformName}}
+                i.icon-check(:class="ind==tab1?'active':''")
+                .val {{it.gameBanlance}}元
+
+
+    #pop_zr.pop_list(v-if="banlance")
+        i.icon-close(onclick="$('.pop_list').slideUp()")
+        h2 请选择转入平台
+        .box
+            .li(v-for="(it,ind) in banlance" @click="setTab2(it,ind)" v-bind:class="ind==tab1||gameCode&&it.gameKey!=gameCode?'disabled':''")
+                .icon(:style="rbg(it.gamePlatformLogo)")
+                span {{it.gamePlatformName}}
+                i.icon-check(:class="ind==tab2?'active':''")
+                .val {{it.gameBanlance}}元
+
+block js
+    script(type='text/javascript' src="../script/zj_zz.js")

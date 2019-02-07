@@ -1,0 +1,15 @@
+
+extends ../layout
+block html
+    -var $page='left_nav'
+block vue
+
+    #pop_menu
+        .bg(onclick='api.closeFrame()')
+        ul
+            li(v-for='(it,ind) in menu', @click='togNav(ind)', :class="{active:setTab2==ind}") {{it}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/left_nav.js")

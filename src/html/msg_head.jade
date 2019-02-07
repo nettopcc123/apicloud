@@ -1,0 +1,16 @@
+extends ../layout
+block vue
+    header.jl_head
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center 消息
+        .right(v-if="titSet==2")
+            i.icon-msg-plus(onclick="comHead('意见反馈','feed_back')" )
+
+    ul.tp_nav
+        li(v-for="(it,ind) in title" v-bind:class="ind==titSet?'active':''" @click="togNav(ind)")
+            b {{it}}
+            sup {{num[ind]}}
+
+block js
+    script(src="../script/msg_head.js")

@@ -1,0 +1,24 @@
+extends ../layout
+block vue
+    #home
+        .top_fix(v-if="hmObj2")
+            .banner.swiper
+                #topBanner.swiper-container
+                    #topDot.swiper-pagination
+                    .swiper-wrapper
+                        .swiper-slide(v-for='(it,ind) in hmObj2.wapBanner', v-bind:style="rbg(it.gameImage)"  @click='disDet(it.urlMethod,it.gameBannerUrl)')
+
+
+            .notice
+                i.icon-volume-medium
+                #topNews.box(v-if!="hmObj2.news&&hmObj2.news.length>0")
+                    p(v-for='(it,ind) in hmObj2.news' @click="toNews(it,1)" ) [{{it.announcementTypeName}}] {{it.title}}-{{it.content}}
+
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/swiper.min.js")
+    script(type='text/javascript' src="../script/home_top.js")

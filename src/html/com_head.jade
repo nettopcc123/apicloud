@@ -1,0 +1,39 @@
+extends ../layout
+block body
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center
+
+    .load_bg
+
+block js
+    script.
+        apiready = function () {
+            var fname = api.pageParam.page, furl= fname=='kefu'? ys.url.kefu : fname + '.html';
+            if (!isEmpty(api.pageParam.data) && !isEmpty(api.pageParam.data.link)) {
+                fname = 'o_link';
+                furl = api.pageParam.page;
+            }
+            if(api.pageParam.tit=='link'){
+                $('.center').addClass('logo')
+                furl = api.pageParam.page;
+            }else {
+                $('.center').text(api.pageParam.tit);
+            }
+
+            if(!isEmpty(fname)){
+                // ys.toast(furl);
+                api.openFrame({
+                    name: fname,
+                    url: furl,
+                    rect: {
+                        x: 0,
+                        y: headerH
+                    },
+                    pageParam: api.pageParam.data,
+                    bounces: api.pageParam.bounces,
+                    scaleEnabled: api.pageParam.tit=='link'
+                });
+            }
+        };

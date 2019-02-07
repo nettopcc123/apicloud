@@ -1,0 +1,30 @@
+doctype html
+-var $page=''
+block html
+html
+    head
+        meta( charset='utf-8')
+        meta(name='viewport', content='maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0')
+        meta(name="format-detection" content="telephone=no")
+        link(rel='stylesheet', href='../css/app.css')
+        script(type='text/javascript', src='../script/api.js')
+        script(type='text/javascript', src='../script/jq.js')
+        script(type='text/javascript', src='../script/fastclick.js')
+        script(type='text/javascript', src='../script/com.js')
+        script(type='text/javascript', src='../script/vue.min.js')
+        script(type='text/javascript', src='../script/app.js')
+        block head
+        title 澳门金沙APP
+    body(class="#{$page}")
+        .butterbar
+            .bar
+        block body
+        #app(v-cloak)
+            block vue
+        .loader
+            .pacman
+
+        block js
+
+
+

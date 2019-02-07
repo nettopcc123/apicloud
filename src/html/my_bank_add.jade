@@ -1,0 +1,40 @@
+extends ../layout
+block vue
+    .my_bank_add
+        .geli(v-if="!user||!user.userRealName")
+            .info_box
+                i.icon-warning
+                h3 您还没有设置真实姓名
+                p 您的姓名必须与银行卡开户人一致
+
+            .btn(onclick="comHead('设置真实姓名','my_set_inp',{t:1})") 前往设置
+        .geli(v-else)
+
+            ul.list-group.inp_list
+                li
+                    b 持卡人
+                    input(v-model="card.userRealName" readonly="true")
+                li
+                    b 银行卡号
+                    input#yh(v-model="card.bankCardNo" placeholder="请输入银行卡号" @blur="checkBank" @keyup.enter="checkBank")
+                li(v-if="step==1")
+                    b 银行名称
+                    input#mc(v-model="card.bankName" v-bind:readonly="card.bankName?true:false")
+                li(v-if="step==1")
+                    b 开户省份
+                    input#sf(v-model="card.province")
+                li(v-if="step==1")
+                    b 开户城市
+                    input#cs(v-model="card.city")
+                li(v-if="step==1")
+                    b 开户支行
+                    input#zh(v-model="card.bankBranchName" placeholder="请输入支行名称" @keyup.enter="subBank")
+            .tip 请您不要绑定储存卡以外的银行卡避免无法到账
+            .btn(v-if="step==0" @click="checkBank") 下一步
+            .btn(v-else @click="subBank") 确定
+
+
+
+block js
+    script(type='text/javascript' src="../script/my_bank_add.js")
+

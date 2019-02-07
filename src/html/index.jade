@@ -1,0 +1,47 @@
+extends ../layout
+block vue
+    .set-h-box#set_w_slider
+        #set_h_header
+        #set_h_filter
+        #set_h_footer
+    .load_bg
+
+    .home_index(v-bind:type="setTab1")
+        header
+            .home_head(:type="setTab2")
+                .head
+                    .left(@click="openLeftNav(setTab2)" )
+                        i.icon-menun
+                    .logo
+                    .right(@click="openGroup(9)" )
+                        i.icon-kefu2
+                .head
+                    .left(@click="openLeftNav(setTab2)" )
+                        i.icon-menun
+                    .center {{menu[setTab2]}}
+                    .right(@click="setTab2==9?comHead('在线客服','kefu'):openGroup(9)" )
+                        i.icon-kefu2
+                .head
+                    .left(@click="openLeftNav(setTab2)" )
+                        i.icon-menun
+                    .center
+                        input(type="search" v-model="searkey[setTab2]" v-bind:placeholder="setTab2==3?'游戏名称':'优惠名称'" @keyup.enter="toSear")
+                        i.icon-search(onclick="toSear()" )
+                        .btnx(onclick="clearSear()" ) 清空
+                    .right(@click="toSelect(setTab2)" )
+                        i.icon-menu
+
+
+
+        footer#footer(:class="islogin&&newMsg?'new_msg':''")
+            ul.nav.nav-foot
+                li(v-for="(it,ind) in islogin? menu_2:menu_1" v-bind:class="ind==setTab1?'active':''" @click="togNav(ind)" )
+                    .box
+                        i(:class="'icon-'+it.i")
+                        p {{it.n}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/socket.io.js")
+    script(type='text/javascript' src="../script/index.js")

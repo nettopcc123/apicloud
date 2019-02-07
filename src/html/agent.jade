@@ -1,0 +1,48 @@
+extends ../layout
+block vue
+    .agent_page
+        .banner
+        .notice
+            i.icon-volume-medium
+            #topNews.box2(v-if="items")
+                dl(v-for='(it,ind) in items')
+                    dt {{it.userName}}
+                    dd 获得佣金{{it.amount}}
+
+        ul.agent-top
+            li
+                h3 {{shuziA}}
+                p 累计服务代理
+            li
+                h3 {{shuziB}}万
+                p 平均每周出款
+            li
+                h3 {{shuziC}}
+                p 昨日新增会员
+        ul.gongshi
+            li(v-for="(it,ind) in menu")
+                .ico
+                    .img(:type="ind")
+                p {{it}}
+
+        .agent-main
+            .img
+            h3 佣金计算
+            h4 1、直属会员佣金计算方式
+            p 直属有效洗码量总和×1‰
+            h4 2、团队佣金计算方式
+            p 团队有效洗码量总和×0.1‰
+            p
+            p 例如A会员发展B会员和C会员，B会员发展D和E会员，C会员发展F和G会员。A会员佣金=(B+C)×1‰+(D+E+F+G)×0.1‰
+            p
+            p *会员必须为有效会员
+            p *有效会员必须为30天内有入款记录，非有效会员洗码量不列入佣金
+
+
+        .btn(v-if="status==0", @click="apply", ) 立即申请
+
+
+
+block js
+    script(type='text/javascript' src="../script/agent.js")
+

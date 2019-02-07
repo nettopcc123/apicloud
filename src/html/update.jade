@@ -1,0 +1,33 @@
+extends ../layout
+block vue
+    .update
+        .tit 当前版本 {{version}}
+        .cont(v-if="version&&item&&version!=item.version")
+            .cs
+                dl
+                    dt 系统
+                    dd {{item.type==0?'ios':'android'}}
+                dl
+                    dt 版本
+                    dd {{item.version}}
+                dl
+                    dt 更新日期
+                    dd {{item.update}}
+            p 更新说明
+
+            .md_view(v-html='mdRun(item.description)')
+
+
+
+            .btn(@click="down()" ) 下载安装
+        .md_view(v-else)
+            p 您当前的APP版本已经是最新。
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/marked.js")
+    script(src="../script/update.js")
+
+

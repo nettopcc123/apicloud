@@ -1,0 +1,22 @@
+extends ../layout
+block vue
+    .discount_main
+        .itemx(v-if="items&&items.length>0" v-for='(it,ind) in items')
+            .pad
+                .img(:style="rbg(it.gameCodeTypeIamge)"  @click='gameDet(it.acType,it.gameCode,it.code,it.jumpOut)')
+                .foot
+                    h3 {{it.liveName}}
+                    p {{it.introduce}}
+                .line-btn
+                    .btn( @click='gameDet(0,it.gameCode,it.code,it.jumpOut)') 进入游戏
+                    .btn.empty(v-if='!user && it.acType==1',  @click='gameDet(9,it.gameCode,it.code,it.jumpOut)') 免费试玩
+
+
+        include ../data_null
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/fl_ty.js")

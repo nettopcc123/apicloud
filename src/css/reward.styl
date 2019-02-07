@@ -1,0 +1,238 @@
+.reward-pop
+    position fixed
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background rgba(0,0,0,.6)
+    [zt]
+        display none
+    &[step="1"] [zt="1"]
+    &[step="2"] [zt="2"]
+    &[step="3"] [zt="3"]
+    &[step="4"] [zt="4"]
+        display inline-block
+
+    &[step="1"]
+        .zjl
+            opacity 0
+    &[step="2"]
+    &[step="4"]
+        canvas
+            opacity 0
+    &[step="3"]
+    &[step="4"]
+        .guajiang
+            opacity 0
+            transform translate(-120%,0)
+    &[step="3"]
+        .form
+            transform translate(-100%,0)
+    &[step="4"]
+        .form
+            opacity 0
+            z-index -1
+        .end
+            transform translate(-100%,0)
+.reward-box
+    position absolute
+    z-index 2
+    left 50%
+    top 35%
+    width 8rem
+    height 6rem
+    margin -3rem 0 0 -4rem
+    background url("../image/zj-zhanshiquyu.png") no-repeat center .6rem/contain
+    padding 3.58rem 1.8rem 0 1.99rem
+    transition .4s .2s
+    &.zoom
+        transform scale(.4)
+        opacity .5
+    .icon-close
+        position absolute
+        z-index 9
+        color #fff
+        right 1rem
+        top -.5rem
+        font-size .4rem
+        border-radius 50%
+        padding 2px
+        border 1px solid #fff
+
+    .main
+        height 1.8rem
+        overflow hidden
+        position relative
+
+    .back
+    .btns
+    .head
+    .top
+    .foot
+    .zjl
+        position absolute
+        background-size contain
+        background-position center
+        background-repeat no-repeat
+    .head
+        color #fc8
+        top 2.8rem
+        left 1rem
+        font-size .2rem
+
+    .zjl
+        width 2rem
+        height 1rem
+        background-image url("../image/zj-zhongjiang.png")
+        top 2.4rem
+        left 60%
+
+    .btns
+        width 4rem
+        height 1rem
+        background-image url("../image/zj-anniu.png")
+        top 6.1rem
+        left 50%
+        margin-left -2rem
+        z-index 6
+        font-size .3rem
+        text-align center
+        line-height .9rem
+        color #fcee50
+        transition .3s ease-in
+        cursor pointer
+        &:hover
+            color #fff
+    .back
+        padding 4px
+        font-size 14px
+        top 4.25rem
+        left 1.2rem
+        background rgba(250,220,120,.5)
+        border-radius 50%
+        color #fff
+        cursor pointer
+        z-index 99
+
+    .top
+    .foot
+        &::before
+        &::after
+            content ''
+            position absolute
+            background-size contain
+            background-position center
+            background-repeat no-repeat
+
+    .top
+        width 100%
+        height 2.4rem
+        background-image url("../image/zj-toubu.png")
+        top 0
+        left 0
+        &:before
+            width 2.8rem
+            height 3rem
+            background-image url("../image/zj-zuobianhua.png")
+            top 4rem
+            left -.3rem
+        &:after
+            width 3rem
+            height 2.8rem
+            background-image url("../image/zj-youbianhua.png")
+            top 4.4rem
+            right -.5rem
+    .foot
+        width 100%
+        top 7.5rem
+        left 0
+        &:before
+        &:after
+            width 2.8rem
+            height 1.6rem
+        &:before
+            background-image url("../image/zj-chongzhiyouhui.png")
+            left .6rem
+        &:after
+            background-image url("../image/zj-youhuihuod.png")
+            right .6rem
+    .guajiang
+        height 1.8rem
+        position relative
+        background-size cover
+        background-position center
+        background-repeat no-repeat
+        transition .5s
+        span
+        img
+        canvas
+            position absolute
+            width 100%
+            height 100%
+        #redux
+            z-index 5
+        *
+            -webkit-touch-callout none
+            -webkit-tap-highlight-color rgba(0,0,0,0)
+            -webkit-user-select none
+        span
+            vertical-align middle
+            text-align center
+            line-height 1.8rem
+            font-size .4rem
+            color #a00
+            text-shadow 0 0 1px #fff,0 0 2px #fff,0 0 3px #fff
+
+    .form
+    .end
+        position absolute
+        width 100%
+        height 100%
+        top 0
+        left 100%
+        transition .3s
+        padding .2rem
+        color #fff
+        background #555
+    .end
+        line-height 1.75
+    .form
+        input
+            height .6rem
+            border 1px solid #777
+            border-radius 4px
+            padding 0 .1rem
+            width 1.6rem
+            background #444
+            color #fff
+            font-size .24rem
+            &:first-child
+                width 100%
+                margin-bottom 10px
+        .btnx
+            position absolute
+            height .6rem
+            line-height .6rem
+            width 2rem
+            right .2rem
+            background #359a4f
+            color #fff
+            text-align center
+            bottom .2rem
+            border-radius 4px
+            border 1px solid rgba(30,50,0,.2)
+            cursor pointer
+            font-size .2rem
+            &.wait
+                background #999
+        span
+            position absolute
+            bottom 1.05rem
+            width 1.3rem
+            background #999
+            color #fff
+            line-height .52rem
+            border-radius 3px
+            right .24rem
+            text-align center
+            font-size .8em

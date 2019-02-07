@@ -1,0 +1,53 @@
+extends ../layout
+block html
+    -var $page = 'agent_body_code'
+block vue
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+    .logo
+    .fdx
+        .code#qrcode2
+        h2 面对面扫码邀请
+        .btn.empty#copy1(data-clipboard-action="copy", :data-clipboard-text="url")
+            h3 复制链接分享给好友
+            p 发给微信、QQ好友
+
+
+block js
+    script(type='text/javascript' src="../script/clipboard.min.js")
+    script(type='text/javascript' src="../script/qrcode.min.js")
+    script.
+        var qrcode=null;
+        apiready = function () {
+            vCont = new Vue({
+                el: '#app',
+                data: {
+                    code:null,
+                    url: null
+                },
+                mounted: function () {
+                    this.code = api.pageParam.code
+                    this.url = ys.url.web + 'm/#/register?parent=' + this.code;
+                    this.qrImg(this.url);
+                },
+                methods: {
+                    qrImg: function (url) {
+                        $('.code').removeClass('show');
+                        setTimeout(function () {
+                            qrcode = new QRCode(document.getElementById("qrcode2"), {
+                                width: 300,
+                                height: 300
+                            });
+                            qrcode.makeCode(url);
+                            $('.code').addClass('show');
+                        }, 300);
+                    }
+                }
+            });
+
+        };
+        var cp_1 = new ClipboardJS('#copy1');
+        cp_1.on('success', function (e) {
+            ys.toast('复制成功^_^');
+        });

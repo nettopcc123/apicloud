@@ -1,0 +1,50 @@
+extends ../layout
+block vue
+    .jilu
+        dl(v-if="items&&items.length>0" v-for='(it,ind) in items' @click="toDet(it)")
+            dt
+                h2 {{ifToday(it.recordTime)?'今天':dateSplit(it.recordTime,1)}}
+                p {{dateSplit(it.recordTime,2)}}
+            dd
+                h3 {{it.recordName}}
+                p(:class="it.assetStateCode")
+                    span {{it.assetName}} {{it.assetStateName}}
+                    span.btnx(v-if!="it.assetCode == 'DEPOSIT' && it.assetStateCode == 'PROCESSING'" @click="cancelOrder(it)") 取消订单
+                    span.jieguo(v-else-if!="it.remark && it.assetCode=='DEPOSIT' && it.assetStateCode != 'EXAMINEING'") 审核结果：{{it.remark}}
+
+
+                h4 {{it.optAmount}}
+
+        include ../data_null
+
+    .show_tz(v-if="showItemSta")
+        .box
+            i.icon-close(@click="showItemSta=false")
+
+            dl
+                dt 订单名称
+                dd {{showItemDet.recordName}}
+            dl
+                dt 订单类型
+                dd {{showItemDet.assetName}}
+            dl
+                dt 订单状态
+                dd {{showItemDet.assetStateName}}
+            dl#ddh_cp(data-clipboard-action="copy" data-clipboard-target="#ddh")
+                dt 订单号
+                dd#ddh {{showItemDet.billNo}}
+            dl(v-if="showItemDet.remark")
+                dt 审核信息
+                dd {{showItemDet.remark}}
+            dl
+                dt 金额
+                dd {{showItemDet.optAmount}}
+            dl
+                dt 下单时间
+                dd {{showItemDet.recordTime}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/clipboard.min.js")
+    script(type='text/javascript' src="../script/jl_zj.js")

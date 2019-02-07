@@ -1,0 +1,527 @@
+.zj_page
+    padding .1rem 0
+    .end_tip
+        text-align center
+        padding .5rem
+        h1
+            font-weight 200
+            color $gold
+            font-size .4rem
+            height 1rem
+        p
+            font-size .28rem
+            padding-bottom .2rem
+        h6
+            font-weight normal
+            font-size .24rem
+            color $gold
+
+        .icox
+            height 2rem
+            img(contain, center)
+            background-image url("../image/ico_ck.svg")
+        .foot_tip
+            position absolute
+            bottom .8rem
+            left 0
+            width 100%
+            color #999
+            b
+                color $gold
+            p
+                font-size .26rem
+                padding-bottom .1rem
+    li.qukuan
+        .btnx
+        .icon-info
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            color $gold
+        .btnx
+            background #00000040
+            padding .1rem .2rem
+            right .8rem
+            font-size .24rem
+            line-height .3rem
+            border-radius .1rem
+            border 1px solid #ffffff20
+            &.wait
+                background #99999940
+                color #fff
+
+        .icon-info
+            right .2rem
+            font-size .4rem
+
+    .transferTips
+        margin-top .2rem
+        background #00000040
+        padding .3rem
+        font-size .23rem
+        text-align left
+        position relative
+        &::before
+            content ''
+            position absolute
+            border .2rem solid transparent
+            border-bottom-color #00000040
+            top -.4rem
+            right 1.5rem
+    .tips
+        margin .3rem
+        h3,b
+            color $gold
+        ol
+            list-style decimal
+            padding .15rem .3rem
+            font-size .24rem
+            color #999
+    .list-group
+        border-radius 0
+        .bank
+            padding .2rem .3rem .2rem 1.5rem
+            & ~ li
+                padding-left 1.5rem
+            h2,h6
+                padding .1rem 0
+                line-height 1
+            h2
+                font-size .32rem
+            h6
+                font-size .24rem
+            .bank_ico
+                position absolute
+                left .3rem
+                width 1rem
+                height 1rem
+                img(contain, center)
+        h3
+            padding .15rem .3rem
+            color $gold
+            font-size .32rem
+            font-weight normal
+        li
+            em
+                font-style normal
+                color #444
+                font-size .26rem
+            &.qukuan
+                line-height .8rem
+                em
+                    color #999
+        .tips
+            margin .3rem
+            background $gold
+            padding .15rem
+            font-size .28rem
+            color #fff
+            border-radius .1rem
+            display block
+            text-align center
+            b
+                color #ffff77
+        input
+            padding-right .1rem
+            background transparent
+        #mm
+            position static
+            text-align left
+            padding 0
+            width 5rem
+    .ckje
+        b
+            font-size .5rem
+            color $gold
+            font-weight 300
+        input
+            width 4rem
+            text-align left
+            font-weight 400
+            font-family Arial
+            right auto
+            left .8rem
+            font-size .5rem
+            line-height .5rem
+            color $gold
+            &::-webkit-input-placeholder
+                font-size .32rem
+                color #555
+                padding-top .1rem
+        label
+            position absolute
+            right .3rem
+            font-size .3rem
+            &.active
+                color $gold
+
+    .mrje::before
+        opacity .3
+
+    .mrje
+        padding .2rem 0
+        height 1rem
+        overflow hidden
+        margin-bottom .2rem
+        white-space nowrap
+
+        label
+            display inline-block
+            float left
+            border-radius .05rem
+            margin 0 .2rem .2rem 0
+            padding 0 .3rem
+            border 1px solid #4443
+            line-height .6rem
+            &.active
+                color $gold
+                border-color $gold
+
+    .btn
+        margin .8rem auto
+        & + .btn
+            margin-top -.1rem
+    .ckfs
+        padding .2rem 0 .2rem .2rem
+        line-height 1
+        .li
+            display inline-block
+            width 3.35rem
+            padding .15rem .2rem
+            background #fff9
+            position relative
+            margin .1rem
+            border 1px solid #3332
+            i
+                font-size .34rem
+                right .1rem
+            .ico
+                display inline-block
+                width .4rem
+                height .4rem
+                background-size contain
+                border-radius .05rem
+                margin-right .1rem
+            .icon-check
+                opacity 0
+            &.active
+                border-color $gold
+                color $gold
+                .icon-check
+                    opacity 1
+
+.zj_foot
+    ul()
+    bor(fixed,0,auto,$tmb)
+    height $foot_h
+    width 100%
+    bottom 0
+    display table
+    text-align center
+    box-sizing content-box
+    background rgba(0,0,0,.15)
+    li
+        display table-cell
+        width 33.33%
+        color #777
+        position relative
+        &.active
+            color $gold
+        &:not(:last-child)::after
+            content ''
+            position absolute
+            width 1px
+            background #ccc
+            height .45rem
+            right 0
+
+        i
+            font-size .36rem
+            margin-right .1rem
+
+.pop_list
+    position fixed
+    bor(fixed,0,auto,rgba(255,255,255,.1))
+    z-index 99
+    bottom 0
+    width 100%
+    background #eee
+    display none
+    //box-shadow 0 -3rem 0 9rem rgba(0,0,0,.6)
+    &::after
+        content ''
+        position fixed
+        left 0
+        top 0
+        width 100%
+        height 100%
+        z-index -3
+        background #fff7
+    h2
+        line-height .8rem
+        background #0001
+        text-align center
+        font-size .3rem
+        font-weight normal
+        color #777
+    .box
+        max-height 6rem
+        overflow-x auto
+        //-webkit-overflow-scrolling touch
+        padding 0 .3rem
+        background #fff
+
+    .li
+        bor(relative,auto,0,#0002)
+        padding .2rem 0
+        font-size .28rem
+        &.disabled
+            filter grayscale(100%)
+            span,.val,.ico
+                opacity .3
+        .ico
+        .icon
+            display inline-block
+            width .5rem
+            height .5rem
+            background #fff no-repeat center/contain
+            margin-right .2rem
+            border-radius .08rem
+        .icon
+            width .6rem
+            height .6rem
+            border-radius 50%
+            box-shadow 0 0 1px #0009
+            background #fff url("../image/qb_center.png") no-repeat center/contain
+
+        p
+            font-size .8em
+            font-weight 200
+            color $gold
+        i
+            opacity 0
+            top 50%
+            transform translateY(-50%)
+            font-size .36rem
+            &.active
+                color $gold
+                opacity 1
+        .val
+            position absolute
+            right .7rem
+            top 50%
+            transform translateY(-50%)
+            color $gold
+
+    i
+        position absolute
+        right 0
+
+    .icon-close
+        top .05rem
+        font-size .4rem
+        padding .15rem
+        z-index 3
+        opacity .6
+
+.end_box
+.qr_box
+.count_box
+.info_box
+    margin .3rem 0
+    background rgba(0,0,0,.1)
+    border-radius .1rem
+    padding .3rem
+.count_box
+    font-size .3rem
+    text-align center
+    h1
+        font-weight normal
+    p
+        color $gold
+.info_box
+    text-align center
+    i
+        font-size 1.6rem
+        color $gold
+    p
+        color #777
+    h3
+        font-weight normal
+        margin .2rem 0
+
+
+.qr_box
+    clear()
+    color #777
+    #qrcode
+    #qrcode2
+        background #fff
+        width 2rem
+        height 2rem
+        float left
+        margin 0 .3rem 0 0
+        border 0
+    #qrcode
+        display none
+    #qrcode2
+        padding .1rem
+
+.end_box
+    text-align center
+    padding .1rem 0 .5rem 0
+    i
+        font-size 1.2rem
+        color $gold
+        border-radius 50%
+        border 2px solid $gold
+        display block
+        width 1.6rem
+        height 1.6rem
+        line-height 1.6rem
+        margin .5rem auto
+
+.tk_tip
+    border-radius .1rem
+    h3
+        font-size .24rem
+        color #777
+        font-weight normal
+        padding .3rem 0 0 .3rem
+    .ok
+        .icon-chevron-right
+            opacity 0
+
+    .list-group li
+        span
+            width .5rem
+            margin-right .2rem
+            font-size .36rem
+
+        .icon-close
+            color #f1682e
+        .icon-check
+            color #1f903f
+            font-size .32rem
+
+
+
+
+
+
+
+.zj_zl
+    .head
+        text-align center
+        background url("../image/zj_head.jpg") no-repeat center bottom/cover
+        padding 1rem
+        color #fff
+        h1
+            font-family Arial
+            font-weight 500
+            font-size .6rem
+            color #da1800
+            text-shadow 0 0 1px #ffee,0 0 2px #ffce
+    .icon
+        display inline-block
+        background #fff url("../image/qb_center.png") no-repeat center/contain
+        margin-right .2rem
+        width .6rem
+        height .6rem
+        //border 1px solid #7773
+        border-radius 50%
+        box-shadow 0 0 1px #0005
+    .list-group
+        margin 0
+        b
+            color #666
+        .val
+            color $gold
+            font-size .28rem
+
+.msg_det
+    margin .4rem .3rem
+    white-space pre-wrap
+    padding .2rem .3rem
+    background #0001
+    border-radius .1rem
+    font-size .3rem
+    line-height 1.8
+    text-align justify
+
+.deposit_pop
+    position fixed
+    width 100%
+    height 100%
+    z-index 999
+    top 0
+    background rgba(255,255,255,.75)
+    transition .3s
+    transform translateY(100%)
+    &.show
+        transform translateY(0)
+
+    .icon-close
+        position absolute
+        z-index 3
+        top .15rem
+        right .2rem
+        font-size .4rem
+
+    .bgv
+    .cont
+    .head
+        position absolute
+        width 100%
+        height 100%
+    .head
+        text-align center
+        height .85rem
+        line-height .85rem
+        background #cccc
+        font-size .3rem
+        opacity .8
+        top 0
+    .cont
+        z-index 2
+        background #f5f5f5
+        padding .85rem 0 1.2rem 0
+        overflow-y auto
+        bottom 0
+    .activity
+        height 50%
+        .item
+            padding .25rem .3rem
+            text-align left
+            border-bottom 1px solid #fff
+    .coupon
+        .item
+            margin .3rem
+            background rgba(200,200,200,.3)
+            padding .3rem 0
+            border-radius .1rem
+            text-align center
+            width auto
+    .item
+    .yhq_li
+        position relative
+        width 100%
+        float none
+        i
+            position absolute
+            top 50%
+            font-size .36rem
+            right .4rem
+            color $gold
+    .item i
+        width .4rem
+        transform translateY(-50%)
+    .yhq_li
+        margin .3rem
+        width 6.9rem
+        &:not(.active)
+            opacity .6
+        i
+            top 0
+            font-size .6rem
+            right .1rem

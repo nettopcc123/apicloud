@@ -1,0 +1,35 @@
+extends ../layout
+block vue
+    header.jl_head
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center {{title[titSet]}}
+        .right.xds(v-if="titSet==1")
+            input(type="search" v-model="key" placeholder="搜索" @keyup.enter="search()")
+            i.icon-search(@click="search()")
+        .right(v-else onclick="filter()" )
+            i.icon-menu
+
+    ul.jl_nav
+        li(:class="dateDiff(start,end)==0 ? 'active':''" @click="setDay(0)") 今天
+        li(:class="dateDiff(start,end)==2 ? 'active':''" @click="setDay(1)") 3天
+        li(:class="dateDiff(start,end)==6 ? 'active':''" @click="setDay(2)") 一周
+        li(:class="dateDiff(start,end)==29 ? 'active':''" @click="setDay(3)") 一个月
+        li
+            span(onclick="filter(1)" ) {{start}}
+            b
+            span(onclick="filter(2)" ) {{end}}
+
+    .countAll(v-if="betCount")
+        dl
+            dt 投注数
+            dd {{betCount.totalBetCount}}
+        dl
+            dt 有效投注额
+            dd {{betCount.totalValidAmount}}
+        dl
+            dt 派彩金额
+            dd {{betCount.totalNetAmount}}
+
+block js
+    script(src="../script/jl_head.js")

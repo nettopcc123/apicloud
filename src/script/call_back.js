@@ -1,0 +1,1 @@
+apiready=function(){vCont=new Vue({el:"#app",data:{phone:null,msg:"每个电话号码每天只能使用3次电话回拨",step:0},methods:{sub:function(){var n=this;if(!ys.regMobile(n.phone))return ys.animate("input","shake"),$("input").focus(),!1;ys.ajax("api/home/phoneCallback","post",{phone:n.phone},function(e){n.msg=e.msg,n.step=e.resCode})}},mounted:function(){}})};

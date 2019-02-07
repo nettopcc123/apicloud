@@ -1,0 +1,118 @@
+extends ../layout
+block vue
+    .zj_page(v-if="user")
+        .end_tip(v-if="step==1")
+            .icox.tk
+            h1 提款申请提交成功!
+            p  我们会在2小时内完成资金核查，完成出款！
+            h6 注：首次出款，客服人员将会核对身份后再进行出款，
+            h6 请确保通讯畅通，以便客服与您联系，谢谢配合!
+            .btn(@click="goCenter()" ) 去会员中心
+            .foot_tip
+                p 提款遇到困难?
+                p
+                    span 请联系
+                    b(onclick="comHead('在线客服','kefu')" ) 在线客服
+                    span 或拨打
+                    b(onclick="location.href='tel:4001201746'" ) 4001201746
+                    span 获得帮助。
+
+
+        .geli(v-else-if="user.atmPassword && user.bindBank && user.phoneAuth && user.userRealName")
+
+            ul.list-group(v-if="setBank")
+                li.bank(onclick="comHead('选择银行卡','my_bank')" )
+                    .bank_ico(:type="setBank.bankCode")
+                    h2 {{setBank.bankName}}
+                    h6 {{setBank.bankCardNo}}
+                    i.icon-chevron-right
+                li.qukuan
+                    em 银行卡开户人
+                    .val {{user.userRealName}}
+            ul.list-group(v-else, @click="getBank()")
+                li 银行卡信息加载失败，请点击这里重试
+
+            ul.list-group
+                h3 提款金额
+                li.ckje(v-if="atm")
+                    b ¥
+                    input#je(type="tel" maxlength="8" v-model="orderAmount" v-bind:placeholder="atm.atmMinAmount+'-'+atm.atmMaxAmount")
+                    label(:class="orderAmount==myBan?'active':''" @click="xAll") 全部
+                li.qukuan
+                    em 金沙钱包： {{myBan}} 元
+                    .btnx(:class="{wait:disabledBtn}", @click='transferAll' ) 一键回收资金
+                    i.icon-info(@click="showTips= showTips?false:true" )
+
+            .transferTips(v-if="showTips") 如果您有资产分布在其它游戏平台，可以点这里一键转回金沙钱包。如果平台比较多，回收时间可能相对比较长，还请耐心等待。
+
+            ul.list-group
+                h3 提款密码
+                li
+                    input#mm(type="password" v-model="atmPassword" maxlength="6" placeholder="请输入提款密码")
+
+            .btn.disabled(v-if="myBan<1") 当前余额不足以提款
+            .btn.disabled(v-else-if="atm && myBan<atm.atmMinAmount") 当前余额不足以提款
+            .btn(v-else @click="sub") 提交订单
+
+
+        .geli(v-else)
+            .tk_tip
+                h3 必需符合以下条件方可提款：
+                ul.list-group
+                    li.ok(v-if="user.phoneAuth")
+                        span.icon-check
+                        b 绑定手机号
+                        i.icon-chevron-right
+                        .val 已绑定
+                    li(v-else, @click="comHead('绑定手机号','my_set_phone')" )
+                        span.icon-close
+                        b 绑定手机号
+                        i.icon-chevron-right
+                        .val 去绑定
+
+                    li.ok(v-if="user.userRealName")
+                        span.icon-check
+                        b 提交真实姓名
+                        i.icon-chevron-right
+                        .val 已设置
+
+                    li(v-else, @click="comHead('设置真实姓名','my_set_inp',{t:1})" )
+                        span.icon-close
+                        b 提交真实姓名
+                        i.icon-chevron-right
+                        .val 去设置
+
+                    li.ok(v-if="user.bindBank")
+                        span.icon-check
+                        b 绑定银行卡
+                        i.icon-chevron-right
+                        .val 已绑定
+
+                    li(v-else, @click="comHead('新增银行卡','my_bank_add')" )
+                        span.icon-close
+                        b 绑定银行卡
+                        i.icon-chevron-right
+                        .val 去绑定
+
+                    li.ok(v-if="user.atmPassword")
+                        span.icon-check
+                        b 设置提款密码
+                        i.icon-chevron-right
+                        .val 已设置
+
+                    li(v-else, @click="comHead('提款密码设置','my_set_pwd',{t:0})" )
+                        span.icon-close
+                        b 设置提款密码
+                        i.icon-chevron-right
+                        .val 去设置
+
+
+
+            .btn(@click="toset()" ) 前往设置
+
+
+
+block js
+    script(src="../script/md5-node.min.js")
+    script(type='text/javascript' src="../script/zj_qk.js")
+

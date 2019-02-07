@@ -1,0 +1,52 @@
+extends ../layout
+block vue
+    .jilu
+        dl(v-if="items&&items.length>0" v-for='(it,ind) in items' @click="showItem=it")
+            dt
+                h2 {{ifToday(it.gameBetTime)?'今天':dateSplit(it.gameBetTime,1)}}
+                p {{dateSplit(it.gameBetTime,2)}}
+            dd(:class="it.netAmount>0 ? 'sy_y' : it.netAmount==0 ? 'sy_p' : 'sy_s'")
+                h3
+                    span {{it.gameName}}
+                    b(:class="it.netAmount<0?'s':it.netAmount<0?'h':'y'") ({{it.netAmount<0?'输':it.netAmount<0?'和':'赢'}})
+                p(:class="it.assetStateCode")
+                    span(:class="it.kickback ? 'active':''") {{it.kickback?'返水':'不返水'}}
+                    span(:class="it.statement ? 'active':''") {{it.statement?'已结算':'未结算'}}
+                h4 {{it.netAmount}}
+
+        include ../data_null
+
+    .show_tz(v-if="showItem")
+        .box
+            i.icon-close(@click="showItem=null")
+
+            dl
+                dt 游戏平台
+                dd {{showItem.gamePlatformName}}
+            dl
+                dt 游戏名称
+                dd {{showItem.gameName}}
+            dl
+                dt 返水
+                dd {{showItem.kickback?'返水':'不返水'}}
+            dl
+                dt 结算状态
+                dd {{showItem.statement?'已结算':'未结算'}}
+            dl
+                dt 下注金额
+                dd {{showItem.gameBetAmount}}
+            dl
+                dt 有效投注额
+                dd {{showItem.gameValidBetAmount}}
+            dl
+                dt 输赢金额
+                dd {{showItem.netAmount}}
+            dl
+                dt 时间
+                dd {{showItem.gameBetTime}}
+            dl
+                dt 流水号
+                dd {{showItem.gameBetNo}}
+
+block js
+    script(type='text/javascript' src="../script/jl_tz.js")

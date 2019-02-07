@@ -1,0 +1,30 @@
+extends ../layout
+block vue
+    .my_bank
+        .card(v-for="(it,ind) in card" v-bind:class="it.default?'active':''" v-bind:type="it.bankCode.toLocaleLowerCase()" onclick="")
+            .ico
+            h2 {{it.bankCardNo}}
+            h3 {{it.bankName}}
+            .check
+            .ove
+                .btn(@click="defCard(it.bankId)") 设为默认
+                .btn(@click="delCard(it.bankId)") 删除
+        .add(v-if="!card||card.length<3" onclick="comHead('新增银行卡','my_bank_add')")
+            i.icon-plus
+
+
+        //.card
+        //    .ico
+        //    h2 24343 **** **** 3454
+        //    h3 中国未知银行
+
+
+        //.card(v-for="(it,ind) in tArr" v-bind:type="it.toLocaleUpperCase()")
+        //    .ico
+        //    h2 24343 **** **** 3454
+        //    h3 中国农业银行
+
+
+block js
+    script(type='text/javascript' src="../script/my_bank.js")
+

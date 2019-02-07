@@ -1,0 +1,60 @@
+extends ../layout
+block html
+    -var $page = 'agent_body agent_1'
+block vue
+    .agent_p1(v-if="my")
+        .top(onclick="toAgent(3)", )
+            p 昨日佣金(元)
+            h1 {{my.yesterdaySum>0?my.yesterdaySum:'暂无收益'}}
+            dl.col3
+                dt
+                    p 累计佣金(元)
+                    h3 {{my.rebateSum}}
+                dt
+                    p 好友总数(人)
+                    h3 {{my.childNum}}
+                dd
+                    p 本周佣金(元)
+                    h3 {{my.week}}
+        .foot
+            .img.imgx
+                .btn(@click="toWin('agent_code',{code:my.invitationCode})", )
+                    span 分享我的二维码
+            .fb
+                .hd(onclick="toAgent(2)", )
+                    h3 我的推荐
+                    .rt
+                        span 推荐记录
+                        i.icon-chevron-right
+
+                .hb
+                    .fl(@click="toWin('agent_code',{code:my.invitationCode})", )
+                        h4 推广方式
+                        .img
+                        p 分享二维码给好友
+                    .fr(onclick="toAgent(2)",  v-if='dbu')
+                        .xz
+                            h4 昨日推广
+                            dl
+                                dt
+                                    h3 {{dbu.yesterday.userCount}}
+                                    p 推广人数
+                                dd
+                                    h3 {{dbu.yesterday.amount}}万
+                                    p 有效洗码量
+
+                        .xz
+                            h4 今日推广
+                            dl
+                                dt
+                                    h3 {{dbu.today.userCount}}
+                                    p 推广人数
+                                dd
+                                    h3 {{dbu.today.amount}}万
+                                    p 有效洗码量
+
+
+block js
+    script(type='text/javascript' src="../script/agent_1.js")
+
+

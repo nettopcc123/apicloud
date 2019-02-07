@@ -1,0 +1,15 @@
+extends ../layout
+block vue
+    header.jl_head
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center 优惠券
+
+
+    ul.tp_nav
+        li(v-for="(it,ind) in title" v-bind:class="ind==titSet?'active':''" @click="togNav(ind)")
+            b {{it}}
+            sup {{num[ind]}}
+
+block js
+    script(src="../script/coupon_head.js")

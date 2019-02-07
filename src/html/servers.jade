@@ -1,0 +1,31 @@
+extends ../layout
+block vue
+    .servers
+        ul.list-group
+            //.head
+            //    input(type="text" placeholder="http://或https://开头且以/结尾" v-model="newUrl")
+            //    .btn( @click="addUrl")
+            //        i.icon-plus-b
+            //        span 添加
+            li(v-for="(it,ind) in items" v-bind:class="ind==setTab?'active':''"  @click="setUrl(it)")
+                b {{it.name}}
+                i.icon-check(v-if="it.id==setTab")
+                //dl
+                //    dt(@click="setUrl(ind)")
+                //        i.icon-check
+                //    dd(@click="delUrl(it)")
+                //        i.icon-trash
+
+        .tip
+            p 如果您的网络畅通但加载不到数据，
+            p(onclick="comHead('在线客服','kefu')" )
+                span 请咨询
+                b 在线客服
+
+        .test_btn(@click='openTest()'  v-if="isTest")
+
+
+
+block js
+    script(type='text/javascript' src="../script/servers.js")
+

@@ -1,0 +1,29 @@
+extends ../layout
+block html
+    -var $page='kefu_page'
+block vue
+    .banner
+    .head
+    .body
+        dl(onclick="comHead('在线客服','kefu')" )
+            dt
+                i.icon-kefu2
+            dd
+                u 联系在线客服
+        dl
+            dt
+                i.icon-call
+            dd
+                input(v-model="phone" type="tel" maxlength="11" placeholder="请输入您的手机号" @keyup.enter="sub")
+                .btn(@click="sub" v-if="step!=1") 立即回拨
+        .tip {{msg}}
+
+        .dh( onclick="location.href='tel:4001201746'")
+            p 400服务热线:4001201746
+            p 温馨提示：大陆用户需开通国际漫游
+
+
+
+block js
+    script(type='text/javascript' src="../script/kefu.js")
+

@@ -1,0 +1,9 @@
+extends ../layout
+block vue
+    .msg_det(v-if="messageContent") {{messageContent}}
+    .data_null(v-else  onclick="comHead('切换服务器','servers')")
+        h4 暂无相关数据
+        p 网络故障？点此修复
+
+block js
+    script(type='text/javascript' src="../script/m_det.js")

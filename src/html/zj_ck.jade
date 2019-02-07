@@ -1,0 +1,179 @@
+extends ../layout
+block vue
+    .zj_page
+        .end_tip(v-if="step==3")
+            .icox.ck
+            h1 存款提交成功!
+            p  我们会尽快完成资金核查，正常情况下30分钟内到账，请确保您的通讯畅通，以便及时查收到短信
+            .btn(@click="step=0" ) 继续存款
+            .btn(onclick="api.closeWin()" ) 去首页
+            .foot
+                p 支付遇到困难?
+                p
+                    span 请联系
+                    b(onclick="comHead('在线客服','kefu')" ) 在线客服
+                    span 或拨打
+                    b(onclick="location.href='tel:4001201746'" ) 4001201746
+                    span 获得帮助。
+
+        .geli(v-else-if="step==0")
+            ul.list-group(v-if="payTypeList")
+                h3 存款方式
+
+                li.ckfs
+                    .li(v-for="(it,ind) in payTypeList" v-bind:class="{active:ind==tab1}"   @click="tab1=ind;popHide()")
+                        .ico.pay_ico(:type="yhmsiuria(it.payTypeCode)")
+                        span {{it.payName}}
+                        i.icon-check
+                .geli(v-if="payTypeList[tab1].payTypeCode=='QUICK'")
+                    .tips(onclick="comHead('澳门金沙优惠活动','det_yh',{id:26},true)" )
+                        span 快速入款送
+                        b 1%
+                        span ，次次存，次次送！
+                    li( @click="popShow(2)")
+                        em 快速入款方式
+                        i.icon-chevron-right
+                        .val {{payInfoList[tab2].payName}}
+                    li
+                        em 存款人姓名
+                        input#xm(type="text" v-model="orderName" placeholder="请输入您的姓名")
+
+            ul.list-group(v-else  @click="getData")
+                li 获取存款方式失败，请点这里重试
+
+            ul.list-group(v-if="payTypeList")
+                h3 存款金额
+                li.ckje
+                    b ¥
+                    input(type="tel" maxlength="8" v-if="payTypeList[tab1].payTypeCode=='QUICK'" v-model="orderAmount" v-bind:placeholder="payInfoList[tab2].minAmount+'-'+payInfoList[tab2].maxAmount")
+                    input(type="tel" maxlength="8" v-else v-model="orderAmount" v-bind:placeholder="payTypeList[tab1].minAmount+'-'+payTypeList[tab1].maxAmount")
+                li
+                    .mrje
+                        label(v-for="(it,ind) in mrje" v-bind:class="it==orderAmount?'active':''"  @click="orderAmount=it" v-if="it>=payTypeList[tab1].minAmount&&it<=payTypeList[tab1].maxAmount") {{it}}
+            ul.list-group(v-if="activityList||couponList")
+                h3 相关优惠
+                li( @click="popShow(3)" v-if="activityList")
+                    em 优惠活动
+                    i.icon-chevron-right
+                    .val {{tab3==999?'不选择优惠':activityList[tab3].displayName}}
+                li( @click="popShow(4)" v-if="couponList")
+                    em 优惠券
+                    i.icon-chevron-right
+                    .val {{tab4==999?'不选择优惠':couponList[tab4].discounts.displayName}}
+
+
+
+
+
+            .btn( @click="nextOne()") 下一步
+
+        .geli(v-else-if="res_quick")
+            .count_box
+                h1 {{res_quick.orderAmount}}
+                p(onclick="$('#tip').fadeIn()" )
+                    span 支付金额（元）
+                    i.icon-info
+            ul.list-group.txt_select
+                li(v-for="(it,ind) in res_quick_arr" data-clipboard-action="copy" v-bind:id="ind" v-bind:data-clipboard-target="'#val_'+ind")
+                    b {{it}}
+                    .val(v-if="ind=='currentTime'") {{res_quick[ind]}}
+                    .val(v-else-if="ind=='failTime'") {{dateFm(res_quick[ind])}}
+                    input.val.inp_copy(v-else onclick="$(this).select();" v-bind:id="'val_'+ind" type="text" v-bind:value="res_quick[ind]")
+
+            .btn( @click="endOrder2()") 完成订单
+            .btn( @click="cancelOrder") 取消订单
+
+
+        .geli(v-else-if="res_qr")
+            .count_box
+                h1 {{res_qr.orderAmount}}
+                p(onclick="$('#tip').fadeIn()" )
+                    span 支付金额（元）
+                    i.icon-info
+            .qr_box(v-if="res_qr.qrCode")
+                img#qrcode
+                #qrcode2
+                p 二维码已自动保存至手机相册（如未成功请手动截屏）。进入{{payTypeList[tab1].payName}}选择“扫一扫”选择“从相册选取二维码”即可完成支付。（本功能需要用到存储二维码到相册的权限）
+
+            ul.list-group
+                li(v-for="(it,ind) in res_qr_arr")
+                    b {{it}}
+                    .val {{ind=='currentTime'?dateFormat(res_qr[ind]):ind=='failTime'?dateFm(res_qr[ind]):res_qr[ind]}}
+
+            .btn( @click="endOrder()") 完成订单
+            .btn( @click="cancelOrder") 取消订单
+
+
+
+
+
+        .tips(v-if="step!=3")
+            h3 温馨提示
+            h4 为确保您的款项即时到账，请您留意以下几点：
+            ol
+                li 若您支付过程中遇到问题且未完成支付，请重新下单；
+                li(onclick="comHead('联系客服','kefu')" )
+                    span 若您支付遇到困难，请联系
+                    b 在线客服
+                    span 获得帮助。
+                li 每次存款，优惠活动与优惠券最多只能二选一。
+
+
+
+    .deposit_pop(:class="{show:showPop}")
+        .bg(@click="showPop=null")
+        .cont.activity.paylist(v-if="showPop==2")
+            .icon-close(@click="popHide()")
+            .head 选择存款方式
+            .item(v-for="(it,ind) in payInfoList", @click="tab2=ind;popHide()", :key="it.id")
+                p {{it.payName}}
+                i.icon-check(v-if="tab2==ind")
+
+        .cont.activity(v-if="showPop==3")
+            .icon-close(@click="popHide()")
+            .head 选择优惠活动
+            .item(@click="tab3=999;popHide()")
+                p 不选择优惠
+                i.icon-check(v-if="tab3==999")
+            .item(v-for="(it,ind) in activityList", @click="checkDis(3,ind)", :key="it.id" v-if="payTypeList&&it.depositMethod.indexOf(payTypeList[tab1].payTypeCode)>-1")
+                p {{it.displayName}}
+                i.icon-check(v-if="tab3==ind")
+
+        .cont.coupon(v-if="showPop==4")
+            .icon-close(@click="popHide()")
+            .head 选择优惠券
+            .item(@click="tab4=999;popHide()")
+                span 不选择优惠
+                i.icon-check(v-if="tab4==999")
+            .yhq_li(v-for="(it,ind) in couponList", :class="{active:tab4==ind}" @click="checkDis(4,ind)", :key="it.id" v-if="payTypeList&&it.discounts.depositMethod.indexOf(payTypeList[tab1].payTypeCode)>-1")
+                dl(v-if="it.discounts")
+                    dt
+                        h1.je(v-if="it.discounts.amount||it.discounts.amount>0") {{it.discounts.amount}}
+                        h1.bl(v-else-if="it.discounts.ratio") {{it.discounts.ratio}}
+                        h1(v-else) --
+                        h4 {{it.discounts.discountName}}
+                        p 满{{it.discounts.minDeposit}}元可用
+
+                    dd
+                        i.icon-check(v-if="tab4==ind")
+                        h2 {{it.discounts.displayName}}
+                        h4 流水要求：{{it.discounts.drawing}}倍
+                        h4
+                            span 有效期：
+                            b {{it.discounts.endTime}}
+
+
+    #tip.alert-box
+        .box
+            i.icon-close(onclick="$('#tip').fadeOut()" )
+            h3 提示
+            p 为了更快的确认订单，系统会在您填写的金额的基础上自动生成一个唯一存入金额
+            div
+                a.btn(onclick="$('#tip').fadeOut()" ) 确定
+
+block js
+    script(type='text/javascript' src="../script/clipboard.min.js")
+    script(type='text/javascript' src="../script/qrcode.min.js")
+    script(type='text/javascript' src="../script/zj_ck.js")
+
+

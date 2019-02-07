@@ -1,0 +1,15 @@
+extends ../layout
+block vue
+    .msg_list
+        .li(v-if="items&&items.length>0" v-for='(it,ind) in items' @click="toDet(it.messageId,ind)")
+            h3
+                sub {{it.messageTime}}
+            p {{it.messageContent}}
+            i.icon-chevron-right
+            i.dot(v-if="!it.read")
+
+        include ../data_null
+
+
+block js
+    script(type='text/javascript' src="../script/m_site.js")

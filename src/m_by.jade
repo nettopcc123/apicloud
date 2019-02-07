@@ -1,0 +1,8 @@
+.pad
+    .img(:style="rbg(it.fishings[0]?it.fishings[0].image:null)" @click='gameDet(it.acType,it.gamePlatfromType,it.gameWapCode,it.jumpOut)' )
+    .foot
+        h3 {{it.gamePlatfromType}}{{it.gameTypeName}}
+        ul {{it.fishings[0].cont}}
+    .line-btn
+        .btn( @click='gameDet(0,it.gamePlatfromType,it.gameWapCode,it.jumpOut)') 进入游戏
+        .btn.empty(v-if='!user && it.acType==1',  @click='gameDet(9,it.gamePlatfromType,it.gameWapCode,it.jumpOut)') 免费试玩

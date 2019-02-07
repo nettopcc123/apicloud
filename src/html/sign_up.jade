@@ -1,0 +1,59 @@
+extends ../layout
+block html
+    -var $page='sign_page'
+block vue
+    i.icon-close(onclick="api.closeWin()" )
+    .sign_box
+        .tabs
+            em 送
+            i(v-for="(it,ind) in title" v-bind:class!="{active:setTab==ind}" @click="setTab=ind") {{it}}
+            p(onclick="comHead('澳门金沙优惠活动','det_yh',{id:27},true)" )
+                span 手机注册每日随机产生最高
+                b 777
+                span 元现金大奖
+
+        ul.reg
+            li
+                i.icon-user
+                input#iu(type="text" v-model="userName" @keyup.enter="signUp()" placeholder="请输入6-12位用户名，小写字母可包含数字" maxlength="12")
+            li.j86
+                i.icon-phone
+                span +86 中国
+                input#it(type="tel" v-model="userPhone" @keyup.enter="signUp()" placeholder="请输入手机号" maxlength="11")
+            li(v-if="setTab==0")
+                i.icon-phone-code
+                input#ic(type="tel" v-model="code" @keyup.enter="signUp()" placeholder="请输入短信验证码" maxlength="6")
+                .btnx#btn_yzm(@click="getCode" ) 发送验证码
+            li
+                i.icon-lock
+                input#ip(type="password" v-model="passWord" @keyup.enter="signUp()" maxlength="12" placeholder="请输入密码，至少6位必须包含字母和数字")
+            //li
+            //    i.icon-youhuiquan
+            //    input(type="text" v-model="parent" @keyup.enter="signUp()" maxlength="6" placeholder="邀请码")
+
+            li.yzm(v-if="captcha")
+                i.icon-phone-code
+                input#yz(type="text" v-model="passcode" @keyup.enter="signIn" placeholder="请输入图形验证码" maxlength="6")
+                img(:src="captcha"  @click="getCapt")
+
+            li.pading
+                i.icon-check(:class="check?'active':''" @click="check=check?false:true" )
+                span(@click="check=check?false:true" ) 我已经届满合法博彩年龄，且同意各项
+                b.right(onclick="comHead('开户条约','help_det',{c:0,a:0});" ) 开户条约
+            li
+                .btn(@click="signUp" ) 立即注册
+
+        .foot(onclick="comHead('在线客服','kefu')" )
+            span 登录时有任何问题，请联系我们24小时
+            b 在线客服
+            span 协助解决。
+            p 本网站采用GLOBAL TRUST最先进的128/256BIT SSL服务器加密机制
+
+
+
+
+block js
+    script(src="../script/md5-node.min.js")
+    script(src="../script/sign_up.js")
+
+

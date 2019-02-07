@@ -1,0 +1,47 @@
+extends ../layout
+block html
+    -var $page='sign_page'
+block vue
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center 找回密码
+    .sign_box
+        p &nbsp;
+        .logo
+        ul(v-if="step==0")
+            li
+                i.icon-user
+                input#iu(type="text" maxlength="12" v-model="userName" @keyup.enter="checkName" placeholder="请输入您的用户名,然后点[发送验证码]")
+            li
+                i.icon-phone-code
+                input#ic(type="tel" v-model="code" @keyup.enter="nextOne" placeholder="请输入验证码" maxlength="6")
+                .btnx#btn_yzm(@click="getCode" ) 发送验证码
+
+            li
+                .btn(@click="nextOne" ) 下一步
+        ul(v-else)
+            li
+                i.icon-user
+                input(type="text" v-model="userName" readonly="true")
+            li
+                i.icon-lock
+                input#ip(type="password" maxlength="12" v-model="newPwd" @keyup.enter="nextTwo" placeholder="请输入密码，至少6位")
+
+            li
+                i.icon-lock
+                input#ib(type="password" maxlength="12" v-model="rePwd" @keyup.enter="nextTwo" placeholder="请确认密码")
+
+            li
+                .btn(@click="nextTwo" ) 确定
+
+        .foot(onclick="comHead('在线客服','kefu')" )
+            span 登录时有任何问题，请联系我们24小时
+            b 在线客服
+            span 协助解决。
+            p 本网站采用GLOBAL TRUST最先进的128/256BIT SSL服务器加密机制
+
+block js
+    script(src="../script/md5-node.min.js")
+    script(src="../script/sign_pass.js")
+

@@ -1,0 +1,28 @@
+extends ../layout
+block body
+
+block js
+    script.
+        apiready = function () {
+            api.openFrame({
+                name: 'agent_fm',
+                url: ys.url.web+'brand/p/index.html?v3',
+                rect: {
+                    x: 0,
+                    y: 0
+                },
+                bounces: true
+            });
+            api.openFrame({
+                name: 'agent_top',
+                url: 'com_head.html',
+                rect: {
+                    x: 0,
+                    y: 0,
+                    h: headerH
+                },
+                pageParam: {tit:'金沙品牌'},
+                bounces: false
+            });
+        };
+

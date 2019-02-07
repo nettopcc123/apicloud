@@ -1,0 +1,45 @@
+@charset "UTF-8"
+
+@import 'api'
+@import 'animate'
+@import 'icon'
+@import 'swiper'
+@import 'select'
+@import 'home'
+@import 'sign'
+@import 'sort'
+@import 'help'
+@import 'about'
+@import 'reward'
+@import 'loader'
+@import 'mine'
+@import 'news'
+@import 'zj'
+@import 'agent'
+@import 'jl'
+
+for $i in 1..9
+    .btn_switch[show=\" {$i}\"]
+        li:nth-child( {$i})
+            background $lan
+            color #fff
+
+
+for $i in 1..5
+    .reply_list[type=\" {$i}\"]
+    .topic_list[type=\" {$i}\"]
+        .menu li:nth-child( {$i})
+            &:before
+                content ''
+                position absolute
+                width .1rem
+                height .1rem
+                background #fff
+                border-radius 50%
+                margin -.05rem 0 0 .2rem
+
+
+
+
+
+

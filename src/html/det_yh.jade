@@ -1,0 +1,37 @@
+block html
+html
+    head
+        meta( charset='utf-8')
+        meta(name='viewport', content='maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0')
+        meta(name="format-detection" content="telephone=no")
+        script(type='text/javascript', src='../script/api.js')
+        script(type='text/javascript', src='../script/jq.js')
+        script(type='text/javascript', src='../script/fastclick.js')
+        script(type='text/javascript', src='../script/com.js')
+        script(type='text/javascript', src='../script/vue.min.js')
+        script(type='text/javascript', src='../script/app.js')
+        block head
+        title 澳门金沙APP
+        style.
+            body{font-size: .2rem;color: #ccc;}
+            .discount_det {display: none;}
+
+            .discount_det .error {
+                margin: 3rem 0.3rem;
+                padding: 0.3rem;
+                font-size: .2rem;
+                background: rgba(0, 0, 0, 0.1);
+                text-align: center;
+                border-radius: 0.08rem;
+                border: 1px solid rgba(200, 200, 200, 0.1);
+                font-weight: 200;
+                color: #cc4214;
+            }
+    body
+        #app(v-cloak)
+            .discount_det
+
+        .loader
+            .pacman
+        script(type='text/javascript' src="../script/det_yh.js")
+

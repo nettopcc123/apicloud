@@ -1,0 +1,23 @@
+extends ../layout
+block vue
+    header.game_head(v-if="screen!=2")
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center
+            i.icon-screen-rotate( onclick="tranSrc()")
+            span {{par.gameCode=='LOTTO'||par.gameCode=='LOTTERY'?'金沙彩票':par.gameCode+'平台'}}
+            i.icon-loop(@click="gameReload()" )
+        .count(v-if="par.actype==1" v-bind:class="loading?'reload':''" @click="toZj(2, par.gameCode)" )
+            span {{gameBanlance}}
+            i.icon-trans
+        .btnx(v-else @click="transAcType()" )
+
+    .ssxx(v-if="otherLink", @click="openLink(otherLink)", , style="margin-top:4rem; text-align:center;")
+        .btn 此游戏需要在浏览器中打开
+        p(style="margin-top:1rem; opacity:.6") 建议使用Chrome浏览器
+    .load_bg(v-else)
+
+
+block js
+    script(type='text/javascript' src="../script/game_det.js")
+

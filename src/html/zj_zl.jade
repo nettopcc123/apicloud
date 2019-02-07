@@ -1,0 +1,16 @@
+extends ../layout
+block vue
+    .zj_zl
+        .head
+            h1 {{myBan2.toFixed(2)}}
+            p 总资产（元）
+
+        ul.list-group
+            li(v-for="(it,ind) in banlance" @click="toZj(2, it.gameKey)" )
+                .icon(:style="rbg(it.gamePlatformLogo)")
+                b {{it.gamePlatformName}}
+                i.icon-chevron-right
+                .val {{it.gameBanlance}}元
+
+block js
+    script(type='text/javascript' src="../script/zj_zl.js")

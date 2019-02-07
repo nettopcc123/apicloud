@@ -1,0 +1,73 @@
+.news_page
+    background #0004
+.news_list
+    padding .1rem
+    .list
+        margin .2rem
+        padding .3rem
+        background #0001
+        border-radius .1rem
+        .cont
+            ovt()
+        .head
+            padding-bottom .1rem
+            margin-bottom .1rem
+            bor(relative,auto,0,#0001)
+            sub
+                position absolute
+                right 0
+                color #777
+            b
+                font-weight normal
+                color $gold
+                margin-left .1rem
+                max-width 3rem
+                display inline-block
+                ovt()
+.news_pop
+    position absolute
+    width 6rem
+    top 40%
+    left 50%
+    transform translate(-50%,-50%)
+    background #fff
+    overflow hidden
+    border-radius .2rem
+    border 1px solid #0005
+    box-shadow 0 0 .2rem #0001
+    transition .3s
+    &.zoom
+        opacity .3
+        transform scale(.5) translate(-100%,-100%)
+    i
+        position absolute
+        top .1rem
+        right .15rem
+        font-size .5rem
+        padding .1rem
+        color #999
+    .head
+        height $head_h
+        line-height $head_h
+        font-size .32rem
+        color #777
+        text-align center
+        bgs(top,#eee,#ddd)
+
+
+    .cont
+        padding .3rem
+        text-align justify
+        font-size .28rem
+        h3
+            color $gold
+            margin-bottom .1rem
+        h6
+            padding .2rem
+            text-align right
+            font-size .22rem
+            font-weight normal
+            color #999
+        .btn
+            margin .2rem .6rem
+

@@ -1,0 +1,20 @@
+extends ../layout
+block vue
+    .jilu
+        dl(v-if="items&&items.length>0" v-for='(it,ind) in items')
+            dt
+                h2 {{ifToday(it.disCountTime)?'今天':dateSplit(it.disCountTime,1)}}
+                p {{dateSplit(it.disCountTime,2)}}
+            dd
+                h3 {{it.disCountName}}
+                p {{it.disCountDesc}}
+                h4 {{it.disCountGoods}}
+
+        include ../data_null
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/jl_yh.js")

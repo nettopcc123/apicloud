@@ -1,0 +1,12 @@
+extends ../layout
+block vue
+    .discount_main
+        .itemx(v-if="items&&items.length>0" v-for='(it,ind) in items')
+            include ../m_by
+        include ../data_null
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/fl_by.js")

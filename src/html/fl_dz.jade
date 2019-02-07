@@ -1,0 +1,12 @@
+extends ../layout
+block vue
+    .live_main.dzyx
+        .item(v-if="items&&items.length>0" v-for='(it,ind) in items')
+            include ../m_dz
+        include ../data_null
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/fl_dz.js")

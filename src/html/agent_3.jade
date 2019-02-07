@@ -1,0 +1,25 @@
+extends ../layout
+block html
+    -var $page = 'agent_body agent_2'
+block vue
+    .agent_p3
+        .top
+            .jb
+                .avatar
+                h2 {{user.userName}}
+                p
+                    span 代理等级
+                    b V
+                    span {{user.vipLeve}}
+        .foot_li
+            .li(v-for="(it,ind) in menu", @click="toAgentChart(ind)", )
+                .pad
+                    .ico(:type="ind")
+                    p {{it}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/agent_3.js")
+
+

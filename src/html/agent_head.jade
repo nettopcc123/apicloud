@@ -1,0 +1,46 @@
+extends ../layout
+block html
+    -var $page = 'agent_body_bg'
+block vue
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center {{title[titSet]}}
+        .right.ico(onclick="comHead('代理制度','agent')" )
+
+
+
+block js
+    script.
+        apiready = function () {
+            //退出登录监听
+            api.addEventListener({name: 'send_logout'}, function (ret, err) {
+                api.closeWin();
+            });
+            $('body').addClass('b'+api.pageParam.t);
+            vCont = new Vue({
+                el: '#app',
+                data: {
+                    titSet:api.pageParam.t,
+                    title:['高级代理人','高级代理人','推荐记录','财务报告']
+                },
+                mounted: function () {
+                    this.togNav(api.pageParam?api.pageParam.t:1)
+                },
+                methods: {
+                    togNav: function (i) {
+                        this.titSet = i;
+                        api.openFrame({
+                            name: 'agent_' + i,
+                            url: 'agent_' + i + '.html',
+                            rect: {
+                                x: 0,
+                                y: headerH
+                            }
+                        });
+                    }
+                }
+            });
+
+
+        };

@@ -1,0 +1,23 @@
+extends ../layout
+block vue
+    .my_bank_add
+        ul.list-group.inp_list
+            li(v-if="step==1")
+                b 真实姓名
+                input(v-model="userRealName" placeholder="请输入您的真实姓名" @keyup.enter="sub")
+            li(v-else-if="step==2")
+                b 微信号
+                input(v-model="userWechat" placeholder="请输入您的微信号" @keyup.enter="sub")
+            li(v-else-if="step==3")
+                b QQ号
+                input(v-model="userQQ" type="tel" placeholder="请输入您的QQ号" @keyup.enter="sub")
+
+        .tip(v-if="step==1") 姓名仅可设置一次且需与提款银行卡开户人一致，请谨慎填写
+
+        .btn(@click="sub") 确定
+
+
+
+block js
+    script(type='text/javascript' src="../script/my_set_inp.js")
+

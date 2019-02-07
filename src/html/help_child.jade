@@ -1,0 +1,23 @@
+extends ../layout
+block vue
+    .helps
+        .hp-level(:class="{show:user}", v-if='user')
+            .avatar
+            h3 您当前是{{user.vipLeve}}星会员
+            .lv_star
+                b(:style="{width:user.vipLeve*20+'%'}")
+
+        .hp-box.hp-desc.md_view(v-if='items&&items.desc', v-html='mdRun(items.desc)')
+        ul.hp-box.li-group(v-if='items&&items.child')
+            li(v-for='(it,ind) in items.child',  @click='toDet(ind)')
+                p {{it.Q}}
+                i.icon-chevron-right
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/helps_db.js")
+    script(type='text/javascript' src="../script/marked.js")
+    script(type='text/javascript' src="../script/help_child.js")

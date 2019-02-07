@@ -1,0 +1,25 @@
+extends ../layout
+block vue
+    .feedback
+        ul.list-group.inp_list
+            li
+                textarea(v-model="quizContent" placeholder="请输入您的留言")
+            li(onclick="$('.feed_menu').addClass('show')")
+                b 留言类型
+                i.icon-chevron-right
+                .val(v-if="menu") {{menu[menuInd].quizTypeName}}
+
+
+        .btn(@click="sub") 提交
+
+    .feed_menu
+        .bg(onclick="$('.feed_menu').removeClass('show')")
+        ul.list-group
+            li(v-for="(it,ind) in menu" v-bind:class="ind==menuInd?'active':''" @click="setMenu(ind)")
+                b {{it.quizTypeName}}
+                i.icon-check
+
+
+block js
+    script(type='text/javascript' src="../script/feed_back.js")
+

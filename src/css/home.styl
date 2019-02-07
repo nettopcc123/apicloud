@@ -1,0 +1,573 @@
+
+body.left_nav
+    background rgba(0,0,0,.0)
+    .bg
+        position absolute
+        width 100%
+        height 100%
+        right 0
+#pop_menu
+    position fixed
+    height 100%
+    width 100%
+    z-index 999
+    font-size .3rem
+    color #eee
+    padding-bottom .99rem
+    text-align center
+    &.open ul
+        transform translate3d(0,0,0)
+    ul
+        background rgba(30,30,30,.95)
+        border-right 1px solid #444
+        padding 0 .3rem
+        overflow-y auto
+        transition .3s
+        width 35%
+        height 100%
+        transform translate3d(-100%,0,0)
+
+    li
+        padding .25rem 0
+        border-top 1px solid rgba(100,100,100,.2)
+        &.active
+            color $hon
+
+.free_play
+    color #fff
+    position: absolute;
+    top: .2rem;
+    right: -.6rem;
+    line-height: 1;
+    padding: 4px 30px 1px 30px;
+    font-size: .22rem;
+    transform: rotate(45deg);
+    bgs(top, rgba(0, 150, 70, 0.8),#102727)
+
+i.icon-menun
+    font-size .5rem
+.home_index
+    header
+        .center
+            width 6rem
+            position relative
+            padding 0
+        input
+            background #333
+            color #fff
+            font-weight 100
+            font-size .24rem
+            width 4rem
+            padding .1rem .8rem .1rem .3rem
+            height .6rem
+            border-radius .05rem
+        .btnx
+            display inline-block
+            height .6rem
+            line-height .6rem
+            font-size .2rem
+            border-radius .05rem
+            padding 0 .24rem
+            background $gold
+            margin-left .1rem
+
+
+        i.icon-menun
+            font-size .5rem
+        i.icon-kefu2
+            font-size .45rem
+        .icon-search
+            position absolute
+            right 1.4rem
+            bottom .1rem
+            padding .2rem .3rem
+
+
+    footer
+        bor(fixed,0,auto,$tmb)
+        width 100%
+        bottom 0
+        box-sizing content-box
+        height $foot_h
+        background #202021
+        color #ccc
+        .nav-foot
+            width 100%
+            bottom 0
+            height $nav_h
+            li
+                -webkit-tap-highlight-color rgba(0,0,0,.1)
+                position relative
+                &.active
+                    color $hon
+                &.new_msg
+                    p:before
+                        content ''
+                        position absolute
+                        border 3px solid $hon
+                        margin-left  .45rem
+                        top .2rem
+                        border-radius 50%
+
+            i
+                font-size .44rem
+                margin 0 0 .05rem 0
+            p
+                font-size .24rem
+                font-weight 100
+
+        &.new_msg ul::after
+            content ''
+            position absolute
+            top .2rem
+            right .3rem
+            width .14rem
+            height .14rem
+            background #f60
+            border-radius 50%
+    &[type="0"]
+    &[type="4"]
+        .home_head
+            transform translate3d(0,0,0)
+            .head
+                &:nth-child(2)
+                &:nth-child(3)
+                    opacity 0
+                &:nth-child(1)
+                    opacity 1
+
+
+.home_head
+    width 15rem
+    white-space nowrap
+    transition .3s
+    font-size 0
+    transform translate3d(-7.5rem,0,0)
+    .head
+        margin-top -.05rem
+        position relative
+        width 7.5rem
+        display inline-block
+        transition .3s
+        opacity 0
+        &:nth-child(2)
+            opacity 1
+    &[type="3"]
+    &[type="6"]
+        transform translate3d(-15rem,0,0)
+        .head
+            &:nth-child(2)
+                opacity 0
+            &:nth-child(3)
+                opacity 1
+
+#topBanner
+    background #eee
+    .swiper-wrapper
+        height 3.5rem
+    .swiper-pagination
+        bottom .6rem
+.swiper-pagination-bullet
+    background rgba(255,255,255,.8)
+    opacity 1
+.swiper-pagination-bullet-active
+    border 1px solid #e30
+    background #f80
+.swiper-slide
+    background-position center
+    background-size cover
+
+.notice
+    //margin-top -.5rem
+    height .5rem
+    line-height .5rem
+    position relative
+    z-index 9
+    background #eee6
+    overflow hidden
+    color #000
+    .icon-volume-medium
+        position absolute
+        z-index 3
+        padding .05rem .1rem .15rem .1rem
+        background #fffc
+        font-size .4rem
+        color #555
+
+    .box
+        white-space nowrap
+        display table
+        p
+            display inline-block
+            margin 0 .5rem
+    .box2
+        padding-left .7rem
+        transition .3s ease-in
+        font-size 0
+        dl
+            display inline-table
+            height .56rem
+            text-align left
+            width 50%
+            dt,dd
+                font-size .24rem
+                display table-cell
+            dt
+                width 1.1rem
+            dd
+                padding-right .2rem
+                color $gold
+#home
+    .top_dx
+        padding .2rem
+        color $gold
+        clear()
+        .img
+            width 3.45rem
+            height 2rem
+            float left
+        .user
+            background-image url("../image/greet.jpg")
+            position relative
+        .is_login
+            padding-top .1rem
+            color #000
+            p
+                padding-left .2rem
+            b
+                color $gold
+            p:nth-child(3) b
+                margin 0 .1rem
+            .foot
+                background #ecb7
+                position absolute
+                bottom 0
+                left 0
+                width 100%
+                text-align center
+                .btnx
+                    width 50%
+                    float left
+                    color $gold
+                    line-height .6rem
+                    &:last-child
+                        border-left 1px solid #fffc
+                        color #f60
+
+
+
+        .no_login
+            text-align center
+            h1
+                margin-top .2rem
+                font-size .36rem
+                font-weight 400
+                line-height 1rem
+            p
+                color lightness($gold,45)
+                position relative
+                &::after
+                &::before
+                    content ''
+                    display inline-block
+                    border-radius 50%
+                    width .1rem
+                    height .1rem
+                    background lightness($gold,75)
+                    vertical-align middle
+                    margin 0 .1rem
+                    opacity .6
+        .win
+            float right
+            bgs(135deg,#edc,#ffe)
+            padding .1rem
+            h3
+                font-weight normal
+                font-size .24rem
+            ul
+                font-size .2rem
+                li
+                    white-space nowrap
+                i,em
+                    font-style normal
+                    margin-left .1rem
+                b,i
+                    color #333
+                b
+                    width .8rem
+                    opacity .7
+                i
+                    width 1rem
+                em
+                    width 1.2rem
+                    text-align right
+
+                b,i,em
+                    display inline-block
+                    ovt()
+
+        .up_box
+            overflow hidden
+            height 1.4rem
+
+    .catalog
+        color #000
+        padding 0 .2rem
+        .tit
+            margin 0 0 .2rem 0
+            font-size .36rem
+            sub
+                font-size .8em
+                opacity .5
+                vertical-align bottom
+                margin-left .1rem
+
+        .img
+            width 3.45rem
+            min-height 1.8rem
+            padding .1rem .2rem
+            overflow hidden
+            background-color #0001
+            box-shadow 2px 2px 10px #7774
+
+        .list1,
+        .list2
+            color #fff
+            padding-bottom .2rem
+            clear()
+            .img
+                float right
+
+        .list1
+            .img
+                position relative
+                overflow hidden
+                &:nth-child(1)
+                    float left
+                    height 3.8rem
+                &:nth-child(2)
+                    margin-bottom .2rem
+        .list2
+            .img
+                margin-bottom .2rem
+                &:nth-child(1)
+                    width 100%
+                    height 2.4rem
+
+                &:nth-child(2),
+                &:nth-child(5)
+                    float left
+                    height 3.65rem
+                &:nth-child(4)
+                    height 3.5rem
+
+
+    .last_game
+        padding-bottom .2rem
+        .box
+            white-space nowrap
+            overflow-x auto
+        .img
+            display inline-block
+            width 2.23rem
+            height 1.5rem
+            min-height 1rem
+            position relative
+            padding 0
+            overflow hidden
+            img(contain,center top)
+            &:not(:last-child)
+                margin-right .2rem
+            *
+                position absolute
+            p
+                background #fca4
+                bottom 0
+                text-align center
+                width 100%
+                padding .05rem
+                ovt()
+            span
+                background #dc7a14d1
+                padding 0 .1rem
+                font-size .2rem
+
+.yh_page .itemx
+
+    .wait
+    .end
+        .img
+            position relative
+            &::before
+                content ''
+                width 1.4rem
+                height 1.4rem
+                position absolute
+                background url("../image/time_begin.svg") no-repeat center/contain
+    .end
+        filter grayscale(100%)
+        opacity .8
+        .img::before
+            background-image url("../image/time_end.svg")
+            bottom 0
+            right 0
+
+
+
+
+
+
+.servers
+    padding .1rem .3rem
+    .head
+        padding .2rem
+        input
+            background $tmb
+            border-radius .05rem
+            width 4.8rem
+            color #fff
+            font-size .24rem
+            height .6rem
+        .btn
+            display inline-block
+            border-radius .06rem
+            line-height .56rem
+            height .6rem
+            width 1.6rem
+            float right
+            *
+                vertical-align middle
+                line-height .56rem
+                margin 0 .05rem
+
+    ul
+        overflow hidden
+
+
+
+    li
+        //transition .3s
+        //&:not(.active):hover
+        //    transform translateX(-1rem)
+        //    dl
+        //        transform translateX(-2rem)
+        b
+            color $gold
+            font-weight 300
+            font-size .28rem
+        i
+            font-size .32rem
+        dl
+            position absolute
+            top 0
+            bottom 0
+            right -3rem
+            width 3rem
+            display table
+            text-align center
+            background #2f2f37
+            color #ff6b19
+            font-size 0
+            box-shadow inset .05rem .05rem .1rem rgba(0,0,0,.3)
+            padding 0
+            transition .4s
+            dt,dd
+                display table-cell
+                width 50%
+
+
+            dt
+                color #88c136
+                border-right 1px solid rgba(0,0,0,.1)
+            i
+                position static
+                font-size .4rem
+    .tip
+        color #777
+        b
+            color $gold
+
+    .test_btn
+        position fixed
+        z-index 3
+        bottom 0
+        left 0
+        width 1rem
+        height 1rem
+
+
+.kefu_page
+    text-align center
+    -webkit-user-select text
+    user-select text
+    .body
+        padding 0 .5rem
+    .banner
+        height 4rem
+        background url("../image/banner_kf.png") no-repeat center top/100% 100%
+
+    .head
+        margin .3rem auto
+        height .5rem
+        background url("../image/kftit.png") no-repeat center/contain
+    input
+    .btn
+        width 4.5rem
+    input
+        height .7rem
+        margin-bottom .3rem
+        color $gold
+        border-radius .4rem
+        border 1px solid $gold
+        background #fffc
+        padding 0 .5rem
+    dl
+        margin .3rem 0
+        background #0003
+        border-radius .1rem
+        overflow hidden
+        width 100%
+        display table
+        dt,dd
+            display table-cell
+            padding .3rem
+        dt
+            background $gold
+            color #fff
+            width 1.2rem
+            padding .2rem .1rem
+            opacity .8
+        i
+            font-size .8rem
+        u
+            font-size .36rem
+            color $gold
+
+    .tip
+        margin .2rem 0
+        opacity .6
+    p
+        opacity .6
+    h1
+        font-size 1.6em
+        font-weight normal
+        margin-top .6rem
+        i
+            margin-right .1rem
+    .dh
+        margin-top .5rem
+
+i[class^="ico_"]
+    display inline-block
+    width .6rem
+    height .6rem
+    margin-right .1rem
+    img(contain,center)
+
+
+for $i in hot lastgame other tk ck
+    i[class=\" {'ico_'+$i}\"]
+        background-image url("../image/ico_"+ $i +".svg")
+
+
+

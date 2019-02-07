@@ -1,0 +1,18 @@
+extends ../layout
+block vue
+    .my_bank_add(v-if="user")
+        ul.list-group.mob_bind
+            li
+                input#ljsjh(v-model="user.userPhone" type="tel" maxlength="11" v-bind:readonly="changePhone" placeholder="请输入您的手机号" @keyup.enter="getCode")
+                .btnx(@click="changeMob()"  v-if="changePhone") 更换手机号
+            li
+                input#ljyzm(v-model="passcode" type="tel" maxlength="6" placeholder="请输入验证码" @keyup.enter="authPhone()")
+                .btnx#btn_yzm(@click="getCode()" ) 发送验证码
+
+
+        .btn(@click="authPhone()" ) 确定
+
+
+block js
+    script(type='text/javascript' src="../script/my_set_phone.js")
+

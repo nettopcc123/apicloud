@@ -1,0 +1,22 @@
+extends ../layout
+block vue
+    .discount_main
+        .clearfix(v-if="items&&items.length>0" v-for='(item,imd) in items')
+            .item.kyqp(v-for='(it,ind) in item.gameInfo')
+                .pad
+                    .img(:style="rbg(it.gameImg)" v-bind:type="it.gamePlatfromType"  @click='gameDet(it.acType,it.gamePlatfromType,it.gameWapCode,it.jumpOut)')
+                        span {{it.gamePlatfromType}}
+                        span
+                        span(v-if!="!user && it.acType==1") 可试玩
+
+
+                    .foot
+                        h3 {{it.gameTypeName}}
+
+
+
+        include ../data_null
+
+
+block js
+    script(type='text/javascript' src="../script/fl_qp.js")

@@ -1,0 +1,16 @@
+extends ../layout
+block html
+    -var $page='news_page'
+block vue
+    .news_pop.zoom(v-if="info")
+        i.icon-close(onclick="api.closeFrame()" )
+        .head {{info.announcementTypeName}}
+        .cont
+            h3 {{info.title}}
+            p {{info.content}}
+            h6 {{info.updateTime}}
+            .btn(v-if="info.tp" @click="more()" ) 更多公告
+
+
+block js
+    script(type='text/javascript' src="../script/news_det.js")

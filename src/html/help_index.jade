@@ -1,0 +1,27 @@
+extends ../layout
+block vue
+    .helps
+        ul.hp-box.hp-menu
+            li(v-for='(it,ind) in menu',  @click='toChild(it,ind)')
+                i(:class="'icon-help'+(ind+1)")
+                p {{it}}
+        .hp-tit 热门问题
+        ul.hp-box.li-group(v-if='hot_qa&&hot_qa.length>0')
+            li(v-for='(it,ind) in hot_qa',  @click='toDet(ind)')
+                p {{it.Q}}
+                i.icon-chevron-right
+        ul.hp-box.li-group
+            li( onclick="comHead('服务器线路','servers')")
+                p 服务器线路
+                i.icon-chevron-right
+            li( onclick="comHead('版本更新','update')")
+                p 版本更新
+                i.icon-chevron-right
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/helps_db.js")
+    script(type='text/javascript' src="../script/help_index.js")

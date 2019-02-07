@@ -1,0 +1,17 @@
+extends ../layout
+block vue
+    .msg_list
+        .li(v-if="items&&items.length>0" v-for='(it,ind) in items' @click="comHead(it.quizTypeName,'m_chat',{id:it.quizId})")
+            h3
+                span {{it.quizTypeName}}
+                sub {{it.quizTime}}
+            p {{it.quizContent}}
+            i.icon-chevron-right
+
+
+        include ../data_null
+
+
+
+block js
+    script(type='text/javascript' src="../script/m_me.js")

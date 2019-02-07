@@ -1,0 +1,26 @@
+extends ../layout
+block vue
+    .agent_chart
+        table.tb1
+            thead
+                tr
+                    th 日期
+                    th 当日佣金
+                    th 直属有效洗码量
+                    th 团队有效洗码量
+            tbody(v-if="items && items.length>0")
+                tr(v-for="(it,ind) in items")
+                    td {{it.stateTime}}
+                    td {{it.amount}}
+                    td {{it.directlyValidAmount}}
+                    td {{it.teamValidAmount}}
+
+        include ../data_null
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/agent_b_1.js")
+
+

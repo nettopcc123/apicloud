@@ -1,0 +1,30 @@
+extends ../layout
+block vue
+    .discount_main
+        .itemx(v-if="items&&items.length>0" v-for='(it,ind) in items')
+            .pad
+                .img(:style="rbg(it.gameCodeTypeIamge)"  @click='gameDet(it.acType,it.gameCode,it.code,it.jumpOut)')
+                .foot
+                    h3 {{it.liveName}}
+                    //p {{it.introduce}}
+                    ul.ca
+                        li(v-for='(im,imd) in it.gameInfo', v-if='imd<=12')
+                            b(v-if='im.gameWapCode',  @click='gameDet(im.acType,it.gameCode,im.gameWapCode,im.jumpOut)') {{im.gameTypeName}}
+                            span(v-else='') {{im.gameTypeName}}
+                        a(v-if='it.gameInfo.length>12',  onclick="$(this).parent().slideUp().siblings('ul').slideDown()") 更多...
+                    ul.cb(v-if='it.gameInfo.length>12')
+                        li(v-for='(im,imd) in it.gameInfo')
+                            b(v-if='im.gameWapCode',  @click='gameDet(im.acType,it.gameCode,im.gameWapCode,im.jumpOut)') {{im.gameTypeName}}
+                            span(v-else='') {{im.gameTypeName}}
+                        a( onclick="$(this).parent().slideUp().siblings('ul').slideDown()") 收起
+
+                .line-btn
+                    .btn( @click='gameDet(0,it.gameCode,it.code,it.jumpOut)') 进入游戏
+                    .btn.empty(v-if='!user && it.acType==1',  @click='gameDet(9,it.gameCode,it.code,it.jumpOut)') 免费试玩
+
+        include ../data_null
+
+
+
+block js
+    script(type='text/javascript' src="../script/fl_cp.js")

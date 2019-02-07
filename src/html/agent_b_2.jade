@@ -1,0 +1,28 @@
+extends ../layout
+block vue
+    .agent_chart
+        table
+            thead
+                tr
+                    th 日期
+                    th 直属注册
+                    th 直属首存
+                    th 团队注册
+                    th 团队首存
+            tbody(v-if="items && items.length>0")
+                tr(v-for="(it,ind) in items")
+                    td {{it.dayTime}}
+                    td {{it.directlyRegist}}
+                    td {{it.directlyFirst}}
+                    td {{it.teamRegist}}
+                    td {{it.teamFirst}}
+
+        include ../data_null
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/agent_b_2.js")
+
+

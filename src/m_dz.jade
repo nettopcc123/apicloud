@@ -1,0 +1,11 @@
+.pad
+    .img(:style="rbg(it.gameImg)" v-bind:type="it.gamePlatfromType"  @click="gameDet(it.acType,it.gamePlatfromType,it.gameWapCode,it.jumpOut)")
+        span {{it.gamePlatfromType}}
+        span {{labArr[parseInt(it.gameLable)]}}
+        span(v-if!="!user&&it.acType==1&&it.gamePlatfromType!='PT'") 可试玩
+    .foot
+        h3 {{it.gameTypeName}}
+        p 人气：{{it.popularity>999?parseInt(it.popularity/100)/100:it.popularity}}万
+        .fav(:class="it.collection?'active':''",  @click='setFav(ind,it.gamePlatfromType,it.gameWapCode,it.collection)')
+            i.icon-like.gd(:id="'heart'+ind")
+            i.icon-like

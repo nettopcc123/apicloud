@@ -1,0 +1,10 @@
+*.DS_Store
+.idea/
+build/
+dist/
+sands/
+node_modules/
+config.js
+package-lock.json
+pq_*
+pq_*/**

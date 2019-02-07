@@ -1,0 +1,647 @@
+@charset "UTF-8"
+$tml = rgba(0,0,0,.04)
+$tmh = rgba(0,0,0,.2)
+$btm = rgba(180,180,180,.5)
+$tmb = rgba(255,255,255,.2)
+$tmr = rgba(220,30,50,.7)
+$tmlv = rgba(0,160,80,.7)
+$gold = #ac0214
+$lan = #1480db
+$he  = #8f4326
+$hon = #ec4340
+$jv = #f1982e
+$lv = #80be1d
+$lv2 = #50de3d
+$qi = #31bbd7
+$hui = #8e8e8e
+$huis = #5a5a5a
+$zi = #8495c2
+$bar = #056eba
+$tmh = rgba(0,0,0,.7)
+$btm = rgba(180,180,180,.5)
+$tmb = rgba(255,255,255,.2)
+$qn = rgba(30,220,150,.6)
+$bor = #ddd
+
+$head_h = 1rem
+$pad_h = 0
+$nav_h = 1.2rem
+$foot_h = 1rem
+
+
+
+.set-h-box#set_w_slider
+    position absolute
+    z-index -1
+    opacity .001
+
+
+#set_h_header
+    height $head_h + $pad_h
+#set_h_filter
+    height $nav_h
+#set_h_footer
+    height $foot_h
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.ttf?2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+html,body,header,section,footer,dl,dt,dd,p,h1,h2,h3,h4,h5,h6
+    margin 0
+    border 0
+    padding 0
+    font-style normal
+body
+    background #fffffe
+    color #333
+    font-size .24rem
+    line-height 1.67
+    //overflow-x hidden
+    font-family -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+    &.stop
+        .zj_page
+
+            max-height 8rem
+            overflow hidden
+    &.tm
+        background transparent
+    &.loaded
+        &::after
+            content ''
+            position static
+            display block
+            bottom 0
+            height 2rem
+            width 100%
+            left 0
+            right 0
+            opacity .8
+            text-align center
+            box-sizing border-box
+            padding-top .6rem
+            background url("../image/the_end.svg") no-repeat bottom/100% auto
+
+
+
+
+    &::before
+        content ''
+        position fixed
+        top -.1rem
+        left -.1rem
+        right -.1rem
+        z-index 4
+        height .1rem
+        box-shadow 0 0 4px rgba(0,0,0,.2)
+html
+    font-size 50px
+    height 100%
+
+
+nav,article,aside,details,main,header,footer,section,fieldset,figcaption,figure
+    display block
+img,a,button,em,del,strong,var,label,cite,small,time,mark,code,textarea
+    display inline-block
+
+ol,ul
+    list-style none
+    margin 0
+    padding 0
+
+input
+    &:not([type='checkbox']):not([type='radio'])
+        -webkit-appearance none !important //-去掉ios内阴影
+    &:-webkit-autofill
+    &:autofill
+        background-color none !important
+        background-image none !important
+
+
+input
+textarea
+    padding .1rem
+    font-size .3rem
+    line-height 1
+    outline none
+    background transparent
+    border 0
+    border-radius 0
+    &::-webkit-input-placeholder
+        color inherit
+        opacity .3
+
+
+a:active, a:hover
+    outline 0
+a, a:visited
+    color $lan
+    text-decoration none
+label, .wordWrap
+    word-wrap break-word
+    word-break break-all
+table
+    border-collapse collapse
+    border-spacing 0
+td,th
+    padding 0
+*
+    box-sizing border-box
+    vertical-align middle
+    //touch-action none // 安卓下会失去滚动事件，慎用
+
+//div
+//    -webkit-tap-highlight-color: transparent;
+//    -webkit-touch-callout: none;
+//    -webkit-user-select: none;
+//    user-select:none;
+
+img
+    max-width 100% !important
+
+ul()
+    list-style none
+    padding 0
+    margin 0
+
+img($s,$p)
+    background-repeat no-repeat
+    background-position $p
+    background-size $s
+
+
+ovt()
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis
+
+bgs($s,$v,$d)
+    background: linear-gradient($s,$v,$d)
+    background: -webkit-linear-gradient($s,$v,$d)
+bgt()
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+trans($x,$y)
+    -webkit-transform translate3d($x,$y,0)
+    transform translate3d($x,$y,0)
+
+tr_ro($x)
+    -webkit-transform rotate($x)
+    transform rotate($x)
+
+
+clear()
+    &:after
+        content ''
+        display table
+        clear both
+        visibility hidden
+        line-height 0
+        height 0
+
+.clearfix
+    clear()
+    .pull-left
+    .left
+        float left
+    .pull-right
+    .right
+        float right
+
+
+.loading_more
+    display block
+    height 1.5em
+    width 100%
+    &:before
+        display inline-block
+        vertical-align text-bottom
+        content ' '
+        height 16px
+        width 16px
+        margin-right 6px
+        background-size contain
+    &:after
+        content '加载更多'
+
+
+
+
+
+.text-center
+    text-align center
+.text-right
+    text-align right
+.text-left
+    text-align left !important
+
+.label
+    display inline-block
+    padding 0.06rem 0.12rem
+    height .46rem
+    border-radius 0.06rem
+    font-size 0.24rem
+    text-align center
+    border 1px solid $lan
+    color $lan
+    &.lv
+        border 1px solid $lv
+        color $lv
+    &.jv
+        border 1px solid $jv
+        color $jv
+
+
+
+
+.home_page #app
+#app.msiuria
+    opacity 1 !important
+
+#app
+#app[v-cloak]
+    transition .5201s
+    opacity 0
+
+
+.none
+    display none
+
+.btn
+    text-align center
+    color #fff
+    font-style normal
+    cursor pointer
+    text-decoration none
+    padding 0 .16rem
+    border-radius 1rem
+    font-size .28rem
+    margin auto
+    max-width 5.6rem
+    height .7rem
+    line-height .7rem
+    background $gold
+    -webkit-tap-highlight-color rgba(0,0,0,.1)
+    &.empty
+        background none
+        border 1px solid $gold
+        color $gold
+        line-height .64rem
+    &.disabled
+        opacity .5
+
+    *
+        vertical-align middle
+        line-height 1.2
+        display inline-block
+
+.nav
+    display inline-table
+    li
+        display table-cell
+        text-align center
+    &.nav-tabs
+        li
+            border-bottom 1px solid $tmh
+            &:not(:last-child)
+                border-right 1px solid $tmh
+            &.active
+                color $lan
+                border-bottom 2px solid $lan
+
+
+
+.banner
+    img(cover,center)
+    overflow hidden
+    position relative
+    width 100%
+    height 3.5rem
+
+
+.data_null
+    margin-top 2rem
+    padding-top 3rem
+    text-align center
+    background url("../image/data_null_2.svg") no-repeat center top
+    background-size auto 80%
+    height 3.6rem
+    transition .3s
+    &.yc
+        opacity 0
+    p
+        font-weight 200
+        color $gold
+        opacity .5
+    h4
+        font-size .3rem
+        font-weight 300
+        letter-spacing .4em
+
+bor($pos,$top,$bot,$cor)
+    position $pos
+    if $top == auto
+        &:after
+            content: '';
+            position: absolute;
+            left: 0;
+            background: $cor
+            bottom -1px
+            width: 100%
+            height: 1px
+            -webkit-transform: scaleY(-0.5)
+            transform: scaleY(-0.5)
+            -webkit-transform-origin: 0 0
+            transform-origin: 0 0
+    else
+        &:before
+            content: '';
+            position: absolute;
+            left: 0;
+            background: $cor
+            top $top
+            width: 100%
+            height: 1px
+            -webkit-transform: scaleY(-0.5)
+            transform: scaleY(-0.5)
+            -webkit-transform-origin: 0 0
+            transform-origin: 0 0
+
+
+.tabs
+    margin-bottom .3rem
+    ul
+        border-radius .1rem .1rem 0 0
+    .tab-con
+        border-radius 0 0 .1rem .1rem
+        display none
+        background #fff
+.nav
+    display table
+    li
+        display table-cell
+        padding 0 .2rem
+
+.list-group
+    margin .3rem 0
+    background rgba(0,0,0,.05)
+    border-radius .1rem
+    color #666
+    li
+        padding 0 .3rem
+        line-height 1rem
+        position relative
+        &:not(:last-child)
+            bor(relative,auto,0,rgba(0,0,0,.12))
+        &:not(:first-child)
+            bor(relative,1px,auto,rgba(255,255,255,.08))
+
+        b
+            font-size .3rem
+            font-weight normal
+            max-width 6.8rem
+            color $gold
+            ovt()
+            display inline-block
+
+        span
+            margin-right .8rem
+            ovt()
+        select
+        input
+            color #333
+            position absolute
+            z-index 6
+            top .15rem
+            right .3rem
+            width 2.5rem
+            background rgba(255,255,255,.06)
+            height .7rem
+            border-radius .06rem
+            text-align right
+            padding-right .2rem
+            font-size .26rem
+            &[readonly]
+                color #777
+            &.inp_copy
+                width 4rem
+                padding 0
+                background transparent
+                color #555
+                font-size .28rem
+                height .4rem
+                opacity .9
+                line-height 1
+        select
+            opacity .0001
+
+        .val
+        i
+            position absolute
+            right .3rem
+            top 50%
+            line-height 1rem
+            opacity .6
+            font-size .24rem
+            transform translateY(-50%)
+        .val
+            opacity .8
+            font-size .26rem
+            max-width 3.6rem
+            ovt()
+        i.icon-check ~ .val
+        i.icon-chevron-right ~ .val
+            right .7rem
+
+    &.inp_list
+        input
+            right auto
+            left 2rem
+            width 4rem
+            text-align left
+            background none
+
+    &.mob_bind
+        input
+            position static
+            width 4rem
+            text-align left
+            background none
+        .btnx
+            position absolute
+            right .2rem
+            background #555
+            width 2.4rem
+            text-align center
+            line-height .4rem
+            color #ccc
+            padding .1rem
+            border-radius .05rem
+            top .2rem
+
+
+.load_bg
+    position absolute
+    width 1.4rem
+    height 1.2rem
+    border-radius .1rem
+    left 50%
+    top 50%
+    background $gold url("../image/bars.svg") no-repeat center/50%
+    opacity .7
+    transform translate(-50%,-50%)
+
+.game_head
+    .center
+        padding-right .9rem
+    .btnx
+        position absolute
+        right .2rem
+        bottom 0
+        width 1.5rem
+        height $head_h
+        background url("../image/btn_game.png") no-repeat center/contain
+    .icon-loop
+        font-size .3rem
+        color $gold
+        margin-left .1rem
+        position absolute
+        bottom .35rem
+    .icon-screen-rotate
+        margin-right .2rem
+    .count
+        position absolute
+        right .15rem
+        border-radius .06rem
+        line-height .5rem
+        bottom .2rem
+        font-size .34rem
+        vertical-align middle
+        color $gold
+        font-family Arial
+        &::before
+            content '¥：'
+            font-size .85em
+            color #fff
+            opacity .5
+
+        //background #f70
+        &.reload
+            animation count .5s infinite
+        i
+            margin-left .1rem
+            color #ccc
+            font-size 1.2em
+
+
+.icon-screen-rotate-2
+    display inline-block
+    margin 5px
+    font-size 20px
+    color #f93
+    background rgba(0,0,0,.8)
+    padding 5px
+    border-radius 3px
+//头部共用
+header
+    position fixed
+    top 0
+    width 100%
+    z-index 5
+    padding-top $pad_h
+    height $head_h + $pad_h
+    line-height $head_h
+    font-size .36rem
+    text-align center
+    color #fff
+    background url("../image/header_bg.png") no-repeat center/100% 100%
+    box-shadow 0 0 2px rgba(0,0,0,.1)
+    .left,.right
+        position absolute
+        padding 0 .3rem
+        top 0
+        font-size .32rem
+        color #ccc
+        i[class*="icon-"]
+            font-size .4rem
+    .logo
+        height $head_h
+        background url("../image/logo.svg") no-repeat center/2.5rem auto
+
+
+    .left
+        left 0
+
+    .right
+        right 0
+        span
+            display inline-block
+            margin-right .1rem
+
+        .btn
+            line-height .5rem
+        .sm
+            font-size .24rem
+            opacity .7
+        &.txt
+            color $hon
+            font-size .28rem
+    .center
+        text-align center
+        vertical-align bottom
+        width 60%
+        height 100%
+        margin 0 auto
+        font-size .36rem
+        ovt()
+
+
+.loops {
+    -webkit-animation: loops 10s infinite;
+    animation: loops 10s infinite;
+}
+
+@-webkit-keyframes loops {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(3600deg);
+    }
+}
+@keyframes loops {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(3600deg);
+    }
+}
+@keyframes count
+    0%
+        color $gold
+    40%
+        color #f40
+    80%
+        color #380

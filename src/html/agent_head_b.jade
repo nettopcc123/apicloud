@@ -1,0 +1,27 @@
+extends ../layout
+block html
+    -var $page = 'agent_head'
+block vue
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center {{title[titSet]}}
+
+
+    ul.tp_nav.agent_nav(v-if="titSet==3")
+        li
+            span 总佣金
+            b {{totalAmount}}
+
+    ul.jl_nav(v-else)
+        li(:class="dateDiff(start,end)==0 ? 'active':''" @click="setDay(0)") 今天
+        li(:class="dateDiff(start,end)==2 ? 'active':''" @click="setDay(1)") 3天
+        li(:class="dateDiff(start,end)==6 ? 'active':''" @click="setDay(2)") 一周
+        li(:class="dateDiff(start,end)==29 ? 'active':''" @click="setDay(3)") 一个月
+        li
+            span(onclick="filter(1)" ) {{start}}
+            b
+            span(onclick="filter(2)" ) {{end}}
+
+block js
+    script(src="../script/agent_head_b.js")

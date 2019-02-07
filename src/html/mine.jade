@@ -1,0 +1,47 @@
+extends ../layout
+
+block html
+    -var $page='mine_page'
+block vue
+    .header
+        i.icon-menun( onclick="openLeftNav(11)")
+        .avatar
+        .right
+            i.icon-cog( onclick="comHead('设置','my_setting')")
+            span( onclick="toWin('msg_head')")
+                i.icon-msg
+                sup(v-if="newMsg>0") {{newMsg}}
+        .con(v-if="user")
+            p {{user.userName}}，欢迎您！
+            p
+                b 当前积分
+                span {{user.integral?user.integral:'--'}}
+            p(onclick="comHead('会员等级','help_child',{c:5});" )
+                b 会员等级
+                span.lv_star
+                    b(:style="{width:user.vipLeve*20+'%'}")
+            h5 上次登录: {{user.patentTime}}
+            ul(onclick="comHead('资金总览','zj_zl')" )
+                i.icon-chevron-right
+                li
+                    h2 ￥{{myBan1.toFixed(2)}}
+                    h4 账户余额（元）
+                li
+                    h2 ￥{{myBan2.toFixed(2)}}
+                    h4 总资产（元）
+
+    .cont
+
+        .panel(v-for="(it,ind) in items")
+            h3 {{it.tit}}
+            .box
+                .ico(v-for="(im,imd) in it.con"  @click="menuTo(ind,imd)")
+                    i.img(:type='parseInt(ind*3+imd)')
+                    p {{im}}
+
+        .btn(onclick="api.sendEvent({name:'send_logout',extra:{zd:true}});" ) 退出登录
+
+
+
+block js
+    script(type='text/javascript' src="../script/mine.js")

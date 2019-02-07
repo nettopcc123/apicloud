@@ -1,0 +1,29 @@
+extends ../layout
+block vue
+    .agent_chart
+        table
+            thead
+                tr
+                    //th 入账时间
+                    th 周期
+                    th 佣金
+                    th 状态
+                    th 备注
+            tbody(v-if="items && items.length>0")
+                tr(v-for="(it,ind) in items")
+                    //td {{dateFormat(it.capitalBeginTime,1)}}
+                    td {{it.weekName}}
+                    td {{it.amount}}
+                    td {{staName[it.state]}}
+                    td
+                        sub {{it.capitalDesc}}
+
+        include ../data_null
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/agent_b_3.js")
+
+

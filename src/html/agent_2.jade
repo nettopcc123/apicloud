@@ -1,0 +1,54 @@
+extends ../layout
+block html
+    -var $page = 'agent_body agent_2'
+block vue
+    .agent_p2
+        .top
+            .jb
+                .avatar
+                h2 {{user.userName}}
+                p
+                    span 代理等级
+                    b V
+                    span {{user.vipLeve}}
+            dl(v-if="my")
+                dt
+                    h3 {{my.rebateTotal}}
+                    p 直属有效洗码量
+                dd
+                    h3 {{my.childRebateTotal}}
+                    p 团队有效洗码量
+        .foot
+            table
+                thead
+                    tr
+                        th
+                            h3 好友账号
+                            dl
+                                dd 状态
+                                dt 好友数
+                                dd 注册时间
+                        th
+                            h3 有效
+                            h3 洗码量
+                        th
+                            h3 直属有效
+                            h3 洗码量
+                tbody
+                    tr(v-for="(it,ind) in items")
+                        td
+                            h3 {{it.userName}}
+                            dl
+                                dd {{it.state}}
+                                dt {{it.totalDirectlyUserNum}}
+                                dd {{it.registTime.substring(0,10)}}
+                        td {{it.totalValidAmount}}
+                        td {{it.totalDirectlyValidAmount}}
+
+            include ../data_null
+
+
+block js
+    script(type='text/javascript' src="../script/agent_2.js")
+
+

@@ -1,0 +1,513 @@
+
+.agent_page
+
+    color #765
+    .header1
+        position fixed
+    
+    .banner
+        height 3.5rem
+        background url(" ../image/agent_banner2.jpg") no-repeat center/cover
+    .notice,.notice i
+        margin-top 0
+        background #eeee
+    .agent-top
+        width 100%
+        margin .3rem 0
+        padding 0 .3rem
+        clear()
+        li
+            width 32%
+            height 2rem
+            float left
+            bgs(-45deg,#fff5ec, #f1dcc2)
+            border-radius .1rem
+            padding .3rem 0 0 .3rem
+            position relative
+            h3
+                color $gold
+                padding .1rem 0
+                font-size .4rem
+                font-weight normal
+                font-family Arial
+                &::after
+                    content ''
+                    position absolute
+                    width .45rem
+                    height 2px
+                    background $gold
+                    left .3rem
+                    top 1rem
+
+            &:nth-child(2)
+                margin 0 2%
+
+
+
+    .gongshi
+        bgs(-45deg,#fff5ec, #f1dcc2)
+        text-align center
+        margin .3rem
+        border-radius .1rem
+        li
+            display inline-block
+            width 33.33%
+            padding .3rem 0
+            &:nth-child(2)
+                position relative
+                &::after
+                &::before
+                    left -.15rem
+                    content '='
+                    position absolute
+                    font-size .5rem
+                    top .55rem
+                &::after
+                    content '+'
+                    left 2.15rem
+            .ico
+                width 1.4rem
+                height 1.4rem
+                margin 0 auto
+                padding .2rem
+                border-radius 50%
+                bgs(top,#ecdccd, #ab896e)
+                .img
+                    width 1rem
+                    height 1rem
+                    background-image url("../image/agent_c_0.svg")
+                    &[type="1"]
+                        background-image url("../image/agent_c_1.svg")
+                    &[type="2"]
+                        background-image url("../image/agent_c_2.svg")
+            p
+                margin-top .1rem
+
+    
+    .agent-main
+        padding .3rem
+        border-radius .1rem
+        margin .3rem .3rem 1.2rem .3rem
+        color #555
+
+        bgs(-45deg,#fff5ec, #f1dcc2)
+        .img
+            border-radius 4px
+            height 7rem
+            background-image url("../image/agent_tree.svg")
+            background-size 90%
+            background-color #fff3
+        h3
+            color $gold
+            margin-top .3rem
+        h4 
+            margin-top .4rem
+            font-size .28rem
+        
+        p 
+            padding 0 0 .1rem .44rem
+            opacity .7
+        
+
+    .btn
+        position fixed
+        border-radius 0
+        bottom 0
+        left 0
+        right 0
+        max-width 100%
+        line-height .9rem
+        height .9rem
+
+            
+
+
+.alert-box
+    position fixed
+    display none
+    z-index 9
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background #7773
+    .box
+        width 80%
+        position absolute
+        top:50%
+        left 10%
+        transform translateY(-50%)
+        background #fff
+        border-radius .1rem
+        border 1px solid #9999
+        box-shadow 0 0 .3rem #5555
+        text-align center
+        color #333
+        h3
+            font-size .3rem
+            padding .2rem 0 0 0
+            font-weight normal
+            color #89a
+
+        p
+            color #444
+            padding .4rem .3rem
+            text-align left
+            min-height 2rem
+            font-size .26rem
+
+        .btn
+            width 2rem
+            margin .05rem auto
+
+        i
+            position absolute
+            right .2rem
+            top .2rem
+            color #bbb
+            padding .08rem
+            font-size .4rem
+
+        div
+            background #eee
+            border-radius 0 0 .1rem .1rem
+            padding .1rem 0
+            
+
+.foot_tip
+    padding .3rem
+    color #cccccc
+    b
+        color $gold
+    
+.sta_tip
+    padding 1rem .3rem
+    color #999
+    i
+        display block
+        height 2.5rem
+        margin .3rem 0
+        background url("../image/menu7.svg") no-repeat center/contain
+
+.agent_body_bg
+    background-image url("../image/agent_head.jpg")
+    background-size 100% auto
+    background-position center top
+    background-repeat no-repeat
+    &.b2
+    &.b3
+        background-image url("../image/agent_head_1.jpg")
+    header
+        background transparent
+        box-shadow none
+        .ico
+            width .36rem
+            height .36rem
+            background url("../image/agent_doc.svg") no-repeat center/contain
+            right .1rem
+            top .25rem
+            opacity .8
+
+.agent_body_code
+    background #fff url("../image/agent_bg.jpg") no-repeat center top/100% 100%
+    header
+        background transparent
+        box-shadow none
+    .logo
+        margin-top .5rem
+        height .7rem
+        background url("../image/logo.svg") no-repeat center/contain
+
+    .fdx
+        position absolute
+        top 45%
+        left 50%
+        transform translate(-50%,-50%)
+        text-align center
+        h2
+            font-weight normal
+    .code
+        width 3rem
+        height 3rem
+        font-size 0
+        overflow hidden
+        padding .2rem
+        margin .1rem auto
+        border-radius .2rem
+        box-shadow inset 0 0 .5rem $gold
+        canvas
+            display none
+        img
+            opacity 0
+            transition .4s 1s ease-in
+            border .1rem solid #fff
+            border-radius .1rem
+        &.show img
+            opacity 1
+    .btn
+        margin .2rem auto
+        height 1rem
+        color #666
+        padding-top .14rem
+        font-size .24rem
+        width 5.4rem
+        h3,p
+            line-height 1.3
+            margin 0
+            display block
+        h3
+            color $gold
+
+
+
+.agent_1
+    background-image url("../image/agent_head.jpg")
+.agent_2
+    background-image url("../image/agent_head_1.jpg")
+.agent_body
+    //background-color transparent
+    background-repeat no-repeat
+    background-size 100% auto
+    background-position 0 -1rem
+    .top
+        color #fff
+        .jb
+            height 2.4rem
+            padding .5rem .4rem 0 2.8rem
+            position relative
+            .avatar
+                width 1.4rem
+                height 1.4rem
+                border-radius 50%
+                position absolute
+                left .8rem
+                background url("../image/avatar.jpg") no-repeat center/cover
+                box-shadow 0 0 0 .08rem #5555
+            p
+                background $gold
+                padding .05rem .3rem
+                display table
+                border-radius .3rem
+                color #fff
+                b
+                    font-size 1.3em
+                    vertical-align baseline
+                    line-height 1.2
+                    font-weight normal
+        h2
+            padding-top .2rem
+            font-weight 300
+        h3
+            font-size .5rem
+            font-weight 500
+            font-family Arial
+            margin 0
+            line-height 1
+        dl
+            display table
+            width 100%
+            text-align center
+            margin 0 0 .5rem 0
+            dt,dd
+                display table-cell
+                width 50%
+            dt
+                border-right 1px solid #9993
+            p
+                opacity .6
+            &.col3
+                dt,dd
+                    width 33.33%
+
+
+
+    .foot_li
+        text-align center
+        padding .5rem .15rem
+        font-size .32rem
+        .li
+            display inline-block
+            width 50%
+            padding .15rem
+        .pad
+            bgs(-45deg,#fff5ec, #f1dcc2)
+            padding .1rem 0 .5rem 0
+            box-shadow .06rem .06rem .1rem #2111
+        .ico
+            width 1.4rem
+            height 1.4rem
+            margin .5rem auto
+            border-radius 50%
+            box-shadow .03rem .03rem .1rem #3211
+            background #fff url("../image/agent_ico_0.png") no-repeat center/cover
+            &[type="1"]
+                background-image url("../image/agent_ico_1.png")
+            &[type="2"]
+                background-image url("../image/agent_ico_2.png")
+            &[type="3"]
+                background-image url("../image/agent_ico_3.png")
+
+
+.agent_head
+    .tp_nav
+        li
+            width 100%
+        b
+            color $gold
+            margin-left .3rem
+.agent_p1
+    .top
+        text-align center
+        padding-top .6rem
+        p
+            color #ccc
+            opacity .7
+        h1
+            color $hon
+            height 1.3rem
+            font-size .5rem
+        h3
+            color #ddd
+
+    .foot
+        margin 0 .4rem
+    .imgx
+        background-image url("../image/agent_btn.png")
+        height 2.5rem
+        border-radius .1rem
+        padding 1.4rem 1rem 0 1rem
+        .btn
+            text-indent .4rem
+            position relative
+            line-height .65rem
+            &::before
+                content ''
+                position absolute
+                width .3rem
+                height .3rem
+                top .18rem
+                margin-left -.1rem
+                background url("../image/code.svg") no-repeat center/contain
+
+    .fb
+        bgs(-45deg,#fff5ec, #f1dcc2)
+        padding .2rem
+        margin .3rem 0
+        border-radius .1rem
+        text-align left
+        color #999
+        h3
+            font-size .32rem
+            color #666
+        h4
+            font-size .28rem
+            color #333
+        .hd
+            position relative
+            border-bottom 1px solid #9994
+            height .6rem
+            .rt
+                position absolute
+                right 0
+                top .06rem
+
+        .hb
+            padding .2rem 0
+            display table
+            width 100%
+            .fl,.fr
+                display table-cell
+            .fl
+                width 2.2rem
+                border-right 1px solid #9994
+                .img
+                    height 2rem
+                    background-image url("../image/agent_m.png")
+                    background-size contain
+                    margin-bottom .15rem
+            .xz
+                padding-left .2rem
+                &:nth-child(1)
+                    margin-bottom .1rem
+                    padding-bottom .1rem
+                    border-bottom 1px solid #9994
+
+            dl
+                display table
+                h3
+                    color $gold
+                dt,dd
+                    display table-cell
+                dt
+                    width 1.5rem
+
+.agent_p2
+    .top
+        height 3.8rem
+    .foot
+        border-radius 0
+        padding 0 .3rem .1rem .3rem
+        //background #111c
+        dl
+            font-size .22rem
+            color #999
+            line-height 1
+            dt,dd
+                display inline-block
+            dt
+                padding 0 .1rem
+                width 1rem
+                text-align center
+                margin 0 .15rem
+                border-left 1px solid #5555
+                border-right 1px solid #5555
+
+        h3
+            color #666
+            line-height 1.4
+            font-size .28rem
+            font-weight normal
+    th,td
+        padding .15rem .1rem
+    td
+        color $gold
+        font-size .34rem
+        text-align center
+    table
+        width 100%
+    thead
+        border-bottom 1px solid #5555
+    th:nth-child(1)
+    td:nth-child(1)
+        width 50%
+        text-align left
+    tr
+        border-bottom 1px dashed #4444
+    td
+        dt
+            color $gold
+            font-size .24rem
+
+.agent_chart
+    padding .1rem
+    table
+        width 100%
+        color #999
+        th,td
+            padding .1rem
+            height .8rem
+
+        th:first-child
+            width 1.6rem
+            text-align left
+        td:not(:first-child)
+            font-size .3rem
+            text-align center
+            color $gold
+        th
+            font-weight normal
+            line-height 1.2
+        tr
+            border-bottom 1px solid #6664
+        sub
+            color #ccc

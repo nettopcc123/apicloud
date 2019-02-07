@@ -1,0 +1,82 @@
+extends ../layout
+block vue
+    .my_setting
+
+        h3 个人基本信息
+
+        ul.list-group
+            li
+                b 用户名
+                .val {{user.userName}}
+            li(v-if="user.userRealName")
+                b 真实姓名
+                .val {{user.userRealName}}
+            li(v-else onclick="comHead('设置真实姓名','my_set_inp',{t:1})" )
+                b 真实姓名
+                i.icon-chevron-right
+                .val 请设置
+
+            li(v-if="user.phoneAuth")
+                b 手机号
+                .val {{user.userPhone}}
+            li(v-else onclick="comHead('绑定手机号','my_set_phone')" )
+                b 手机号
+                i.icon-chevron-right
+                .val {{user.userPhone}}
+
+
+            li(@click="comHead('微信号设置','my_set_inp',{t:2,w:user.userWechat})" )
+                b 微信号
+                i.icon-chevron-right
+                .val {{user.userWechat?user.userWechat:'请设置'}}
+            li(@click="comHead('QQ号设置','my_set_inp',{t:3,q:user.userQQ})" )
+                b QQ号
+                i.icon-chevron-right
+                .val {{user.userQQ?user.userQQ:'请设置'}}
+            li(onclick="comHead('我的银行卡','my_bank')" )
+                b 银行卡
+                i.icon-chevron-right
+                .val {{user.bindBank?'已设置':'请设置'}}
+            li(onclick="comHead('会员等级','help_child',{c:5});" )
+                b 会员等级
+                i.icon-chevron-right
+                .val {{user.vipLeve}}
+
+
+        h3 安全设置
+
+        ul.list-group
+            li(@click="comHead('提款密码设置','my_set_pwd',{t:user.atmPassword?1:0})" )
+                b 提款密码
+                i.icon-chevron-right
+                .val {{user.atmPassword?'已设置':'请设置'}}
+            li(onclick="comHead('登录密码设置','my_set_pwd',{t:2})" )
+                b 登录密码
+                i.icon-chevron-right
+                .val 修改
+
+
+        h3 其它
+
+        ul.list-group
+            li(onclick="comHead('服务器线路','servers')" )
+                b 服务器线路
+                i.icon-chevron-right
+                .val {{servers ? servers.name:'设置'}}
+            li(onclick="comHead('版本更新','update')" )
+                b 版本更新
+                i.icon-chevron-right
+                .val {{version}}
+            li(onclick="clearCache()" )
+                b 清除缓存
+                i.icon-chevron-right
+                .val {{size}}
+            li
+                b 上次登录时间
+                .val {{user.patentTime}}
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/my_setting.js")

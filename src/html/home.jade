@@ -1,0 +1,81 @@
+extends ../layout
+block vue
+    #home
+        //.top_fix(v-if="hmObj2")
+        //    .banner.swiper
+        //        #topBanner.swiper-container
+        //            #topDot.swiper-pagination
+        //            .swiper-wrapper
+        //                .swiper-slide(v-for='(it,ind) in hmObj2.wapBanner', v-bind:style="rbg(it.gameImage)"  @click='disDet(it.urlMethod,it.gameBannerUrl)')
+        //
+        //
+        //    .notice
+        //        i.icon-volume-medium
+        //        #topNews.box(v-if!="hmObj2.news&&hmObj2.news.length>0")
+        //            p(v-for='(it,ind) in hmObj2.news' @click="toNews(it,1)" ) [{{it.announcementTypeName}}] {{it.title}}-{{it.content}}
+        //
+
+        .top_dx
+            .img.user
+                .is_login(v-if="user")
+                    p {{stime()}}好! 尊贵的金沙会员
+                    p
+                        b {{user.userName}}
+                    p
+                        span 金沙钱包:
+                        b {{banlance_center}}
+                        span 元
+                    .foot
+                        .btnx(onclick="toZj(1)" ) 取款
+                        .btnx(onclick="toZj(0)" ) 存款
+
+                .no_login(v-else)
+                    h1(onclick="to_login()" ) 要想富,先登录
+                    p(onclick="to_register()" )  注册最高送777元豪礼
+
+
+            .img.win
+                h3 中奖瞬间
+                .up_box
+                    ul#topWins(v-if="hmObj2")
+                        li(v-for='item in hmObj2.allWinning'  @click="gameDet(0,item.gamePlatform,item.gameCode,item.jumpOut)")
+                            b {{item.userName}}
+                            i {{item.gameName}}
+                            em {{item.gameBetAmount}}
+
+        .catalog(v-if="hmObj1")
+            .last_game(v-if="user&&lastGame&&lastGame.length>0")
+                .tit
+                    //i.ico_lastgame
+                    span 最近游戏
+                    sub LAST GAMES
+                .box
+                    .img(v-for="(it,ind) in lastGame", :style='rbg(it.img)', @click='gameDet(0,it.gamePlatform,it.gameTypeCode,it.jumpOut)' tapmoce)
+                        span {{it.gamePlatform}}
+                        p {{it.gameName}}
+                    .img(v-if="lastGame.length==1" v-for="it in 2")
+                    .img(v-if="lastGame.length==2")
+            .tit
+                //i.ico_hot
+                span 金沙爆款
+                sub HOT GAMES
+
+            .list1
+                .img(v-for="(it, ind) in hmObj1.liveHome", :style='rbg(it.imageBroadcast)', @click='gameDet(it.acType,it.gamePlatfromType,it.gameWapCode,it.jumpOut)')
+                    p {{it.gameTypeName}}
+                    .free_play(v-if="!user && it.acType==1") 可试玩
+
+
+            .tit
+                //i.ico_other
+                span 其它游戏
+                sub OTHER GAMES
+
+            .list2
+                .img(v-for="(it, ind) in hmObj1.otherHome", :style='rbg(it.imageBroadcast)', @click='allMenu(it.routingPath)')
+                    p {{titArr[it.routingPath]}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/home.js")

@@ -1,0 +1,41 @@
+
+extends ../layout
+
+block html
+    -var $page='tm'
+block vue
+    .reward-pop(:step='step')
+        .reward-box.zoom
+            i.icon-close(@click='endReward()')
+            .top
+            .foot(onclick="comHead('优惠详情','det_yh',{id:36})" )
+            .zjl
+            .main
+                .guajiang
+                    span {{info.prizaName}}
+                    img#redux(src='../image/zj-weiguajiang.png')
+                .form
+                    input#ljsjh(type='tel', v-model='user.userPhone', :readonly='changePhone', maxlength='11', placeholder='请输入您的手机号')
+                    input#ljyzm(type='tel', v-model='passcode', maxlength='6', placeholder='验证码')
+                    .btnx#btn_yzm(@click='getCode()') 获取短信验证码
+                    span(@click='changePhone=false;user.userPhone=null') 更换手机号
+                .end(zt='4') {{end_msg}}
+            .back.icon-chevron-left(zt='3', @click="step=2")
+            .btns(zt='2', @click='getGrantReward') 领取奖品
+            .btns(zt='3', @click='subReward()') 确定
+            .btns(zt='4', @click='endReward()') 关闭
+            .head
+                span(zt='1') 您有一次刮奖机会哦
+                span(zt='2') 您已刮中奖品
+                span(zt='3') 请留下联系方式领奖
+                span(zt='4') 您已经抽过奖品
+
+
+
+
+block js
+    script(src="../script/jquery.eraser.js")
+    script(src="../script/reward.js")
+
+
+

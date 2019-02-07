@@ -1,0 +1,18 @@
+extends ../layout
+block vue
+    header
+        .left(onclick="api.closeWin()" )
+            i.icon-chevron-left
+        .center {{tabs[tabSet].t}}
+        .right.txt( onclick="jlHead(2)") 资金记录
+
+    ul#footer.zj_foot
+        li(v-for="(it,ind) in tabs" v-bind:class="ind==tabSet?'active':''" @click="setTab(ind)" )
+            i(:class="'icon-'+it.i")
+            b {{it.t}}
+
+
+
+block js
+    script(type='text/javascript' src="../script/zj.js")
+

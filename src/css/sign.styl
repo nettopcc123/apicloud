@@ -1,0 +1,159 @@
+.sign_page
+    background #333 url("../image/login_bg.jpg") no-repeat center top/cover
+    background-attachment fixed
+    .icon-close
+        position fixed
+        font-size .46rem
+        top .3rem
+        left .3rem
+        color #ccc
+.sign_box
+    padding .5rem .11rem
+    margin 0 auto
+    color #fff
+    font-size: .26rem
+    .tabs
+        background url("../image/signup_bg.png") no-repeat center
+        background-size 4.6rem auto
+        height 2.6rem
+        text-align center
+        i
+            padding .5rem
+            font-size .4rem
+            font-style normal
+            display inline-block
+            &.active
+                color $gold
+
+        p
+            opacity .7
+        em
+            position: absolute;
+            background: #f30;
+            left 42%
+            top .8rem
+            width .4rem
+            height .4rem
+            line-height: .4rem
+            overflow hidden
+            border-radius: 50%;
+            font-style: normal;
+            font-size: .24rem;
+            color: #fff;
+            animation: Demo .6s ease-in-out infinite;
+    .tog_nav
+        margin-top -.6rem
+        padding-bottom .6rem
+        text-align center
+        p
+            color #999
+            position relative
+
+            &::after
+            &::before
+                content ''
+                position absolute
+                height 1px
+                width 30%
+                background #9995
+                top .18rem
+            &::after
+                right .3rem
+            &::before
+                left .3rem
+
+        i
+            display inline-block
+            padding .2rem
+            background $gold
+            border-radius 50%
+            font-size .6rem
+            margin .2rem
+
+    .logo
+        height 2.4rem
+        margin .3rem auto
+        background url("../image/logo_s.svg") no-repeat center top/contain
+    ul
+        padding 0 .5rem .6rem .5rem
+        &.reg li
+            margin .2rem auto
+        li
+            margin .3rem 0
+            position relative
+            i
+                position absolute
+                top .16rem
+                font-size .45rem
+                opacity .7
+            input
+                border-bottom 1px solid rgba(255,255,255,.2)
+                height .8rem
+                width 100%
+                color #fff
+                padding-left .5rem
+                font-size .28rem
+                &:focus
+                    border-bottom-color $gold
+            &.pading
+                padding .2rem 0
+                font-weight 200
+                i
+                    position static
+                    font-size .24rem
+                    margin 0 .2rem 0 .05rem
+                    border 1px solid #999
+                    color rgba(0,0,0,.1)
+                    transition .2s
+                    &.active
+                        color #fff
+                        border-color #fff
+                .active
+                    opacity 1
+                    color #fff
+
+            &.yzm
+                img
+                    position absolute
+                    width 2.4rem
+                    height .7rem
+                    right 0
+                    border-radius .1rem
+
+            &.j86
+                span
+                    position absolute
+                    opacity .7
+                    left .5rem
+                    top .2rem
+                input
+                    padding-left 1.8rem
+
+            .btnx
+                position absolute
+                right 0
+                padding .08rem .3rem
+                background rgba(255,255,255,.1)
+                border-radius .5rem
+                color #fff
+                top 50%
+                transform translateY(-50%)
+
+            .btn
+                margin .5rem auto
+    b
+        color #f9f285
+        &.right
+            position absolute
+            right 0
+
+    .foot
+        padding .2rem .18rem
+        color #ccc
+        font-size .24rem
+
+@keyframes Demo
+    0%,100%
+        transform: translateY(-0%);
+    60%
+        transform: translateY(-20%);

@@ -1,0 +1,16 @@
+extends ../layout
+block vue
+    .helps
+        .hp-tit(v-if='cont') {{cont.Q}}
+        .hp-box.md_view(v-if='cont', v-html='mdRun(cont.A)')
+        .data_null(v-else)
+
+
+
+
+
+
+block js
+    script(type='text/javascript' src="../script/helps_db.js")
+    script(type='text/javascript' src="../script/marked.js")
+    script(type='text/javascript' src="../script/help_det.js")

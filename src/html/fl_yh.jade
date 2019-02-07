@@ -1,0 +1,18 @@
+extends ../layout
+block vue
+    .discount_main.yh_page
+        .itemx(v-if="items&&items.length>0" v-for='(it,ind) in items' @click="comHead('优惠详情','det_yh',{id:it.gameOfferId})" )
+            .pad(:class="sendUI(it.beginTime,it.endTime)")
+                .img(:style="rbg(it.gameOfferImg)")
+                .foot
+                    h3 {{it.gameOfferName}}
+                    p {{it.gameOfferTitle}}
+                    h4 活动时间: {{ it.timaName }}
+
+        include ../data_null
+
+
+block js
+    script(type='text/javascript' src="../script/fl_yh.js")
+
+

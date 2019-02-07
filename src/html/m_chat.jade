@@ -1,0 +1,18 @@
+extends ../layout
+block vue
+    .msg_chat
+        .li(v-if="items&&items.length>0" v-for='(it,ind) in items' v-bind:class="it.appendTIme?'me':''")
+            h6 {{it.appendTIme?it.appendTIme:it.answerTIme}}
+            .avatar(v-if="it.answerTIme")
+            .box {{it.appendTIme?it.appendContent:it.answerContent}}
+
+
+        include ../data_null
+
+
+    .fix_inp.fx
+        textarea(v-model="appendContent" placeholder="追加留言" onfocus="inputUp(1)" onblur="inputUp(2)")
+        .btn(@click="sub") 发送
+
+block js
+    script(type='text/javascript' src="../script/m_chat.js")
